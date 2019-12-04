@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BTS Interruptions</title>
+    <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+
+</head>
+
+<body>
+
+    <div> <!-- STR-->
+    {% if strresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">STR OFC BREAKS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in strresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmstr}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No STR OFC Breaks</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- SSA-->
+    {% if ssaresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">SSA OFC BREAKS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in ssaresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmssa}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No SSA OFC Breaks</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- BLT-->
+    {% if bltresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">BUILT UP FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in bltresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmblt}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Built Up Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- RING-->
+    {% if ringresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">RING FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in ringresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmring}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Ring Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+
+<div> <!-- OFEPT-->
+    {% if ofeptresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">OF EQPT FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in ofeptresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmofept}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Ofc Eqpt Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- PSF-->
+    {% if psfresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">POWER SUPPLY FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in psfresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmpsf}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Power Supply Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- PPF-->
+    {% if ppfresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">POWER PLANT FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in ppfresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmppf}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Power Plant Faults</h3>
+
+    {% endif %}
+
+</div>
+
+
+<br/>
+
+<div> <!-- DG-->
+    {% if dgresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">DG FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in dgresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmdg}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No DG Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- DG BATT-->
+    {% if dgbattresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">DG START BATTERY FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in dgbattresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmdgbatt}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No DG Start Battery Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- LBATT-->
+    {% if lbattresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">BATTERY BACKUP FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in lbattresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmlbatt}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Battery Backup Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- NO DG-->
+    {% if nodgresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">NO DG FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in nodgresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmnodg}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No DG Faults Nil</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- NO DSL -->
+    {% if nodslresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">NO DIESEL FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in nodslresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmnodsl}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Diesel Faults Nil</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- HW -->
+    {% if hwresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">BTS HARDWARE FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in hwresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmhw}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Bts Hardware Faults</h3>
+
+    {% endif %}
+
+</div>
+
+<br/>
+
+<div> <!-- MISC -->
+    {% if miscresult %}
+    <table class="mytable">
+
+    <thead>
+
+    <tr>
+	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">MISC FAULTS</th>
+	</tr>
+
+    <th>S.NO</th>
+    <th>SDCA</th>
+    <th>BTS_NAME</th>
+    <th>MAKE</th>
+    <th>TECH</th>
+    <th>TYPE</th>
+    <th>REASON</th>
+    <th>F_DATE</th>
+    <th>F_TIME</th>
+    <th>R_DATE</th>
+    <th>R_TIME</th>
+    <th>DURATION</th>
+
+
+    </thead>
+
+
+    {% for each in miscresult %}
+
+    <tr>
+
+    <td><center>{{ forloop.counter }}</center></td>
+    <td>{{each.SDCA}}</center></td>
+    <td>{{each.BTS_NAME}}</center></td>
+    <td><center>{{each.MAKE}}</center></td>
+    <td><center>{{each.TECH}}</center></td>
+    <td><center>{{each.SITE_TYPE}}</center></td>
+    <td>{{each.REASON}}</td>
+    <td><center>{{each.DOWN_DATE}}</center></td>
+    <td><center>{{each.DOWN_TIME}}</center></td>
+    <td><center>{{each.CLEARED_DATE}}</center></td>
+    <td><center>{{each.CLEARED_TIME}}</center></td>
+    <td><center>{{each.DURATION}}</center></td>
+
+    </tr>
+
+
+
+
+    {% endfor %}
+
+    <tr>
+    <td colspan="11" style="color:red;font-weight:bold;text-align:right">TOTAL OUTAGE</td>
+
+    <td style="color:red;font-weight:bold;text-align:center">{{sdmmisc}}</td>
+    </tr>
+
+
+    </table>
+
+    {% else %}
+
+    <h3>No Misc Faults</h3>
+
+    {% endif %}
+
+</div>
+
+
+</body>
+</html>
+
+

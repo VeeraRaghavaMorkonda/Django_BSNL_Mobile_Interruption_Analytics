@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+   <head>
+      <title>TM Wise Faults</title>
+      <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="refresh" content="120">
+
+      <style>
+                  body {
+               font-family: "calibri";
+            }	
+               
+
+            .table {
+               font-family: "calibri";
+               border-collapse: collapse;
+               width: 100%;
+            }
+
+            .table td, .table th, .table tr {
+               border: 1px solid black;
+               padding: 5px;
+            }
+
+            .table tr:hover {background-color: #ddd;}
+
+            .table th {
+               padding-top: 5px;
+               padding-bottom: 5px;
+               text-align: center;
+               background-color: orange;
+               color: white;
+            }
+
+            .container {
+               width:100%;
+               padding-right:0px;
+               padding-left:0px;
+               margin-right:0px;
+               margin-left:0px
+            }
+
+            .button {
+               
+               background-color: #4CAF50;
+               border-radius: 5px;
+               color: white;
+               padding: 2px 5px;
+               text-align: center;
+               text-decoration: none;
+               display: inline-block;
+               font-size: 15px;
+               margin: 4px 2px;
+               cursor: pointer;
+            }
+                  
+                  </style>
+               
+   </head>
+   <body>
+   
+   <div class = "container"> 
+    
+   <div>
+
+	   <h2 align="center">Maheepal -> <span style="color:red">{{maheepal_cnt}} Faults </span> </h2>
+             
+   {{maheepal | safe}}
+   
+   </div>
+   <br>
+   <div>
+
+	   <h2 align="center">Nagaraju -> <span style="color:red">{{nagaraju_cnt}} Faults </span> </h2>
+             
+   {{nagaraju | safe}}
+   
+   </div>
+   <br>
+   <div>
+
+	   <h2 align="center">Sampath -> <span style="color:red">{{sampath_cnt}} Faults </span> </h2>
+             
+   {{sampath | safe}}
+   
+   </div>
+   <br>
+   <div>
+
+	   <h2 align="center">Surendra -> <span style="color:red">{{surendra_cnt}} Faults </span> </h2>
+             
+   {{surendra | safe}}
+   
+   </div>
+   <br>
+   <div>
+
+	   <h2 align="center">Srinivasulu -> <span style="color:red">{{seenu_cnt}} Faults </span> </h2>
+             
+   {{seenu | safe}}
+   
+   </div>
+   <br>
+   <div>
+
+	   <h2 align="center">Chenganna -> <span style="color:red">{{chenganna_cnt}} Faults </span> </h2>
+             
+   {{chenganna | safe}}
+   
+   </div>
+   <br>
+   
+
+   <br/>
+
+   <div align="center" style="border:1px solid red">
+      Developed by Veera Raghava JTO
+   </div>
+
+</div>  
+          
+
+   </body>
+</html>

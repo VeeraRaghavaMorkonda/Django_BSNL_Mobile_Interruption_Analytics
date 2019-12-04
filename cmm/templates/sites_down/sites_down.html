@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en">
+   <head>
+      <title>Current Sites Down</title>
+      <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="refresh" content="60">
+      <link rel="stylesheet" href="{% static 'css/pandas_css.css' %}">
+      <script src="{% static 'js/mpld3.js' %}"></script>
+     
+   </head>
+   <body>
+   
+     
+      
+         
+     
+     <h2 style = 'text-align:center;color:red;'>NORTEL, ZTE, HUAWEI BTS DOWN :  </h3>
+
+    <p> {{nt_hw_zte | safe}} </p>
+
+    <br/>
+
+    <h2 style = 'text-align:center;color:red;'> NSN BTS DOWN :  </h3>
+    <p> {{nsn | safe}} </p>
+          
+
+   </body>
+</html>

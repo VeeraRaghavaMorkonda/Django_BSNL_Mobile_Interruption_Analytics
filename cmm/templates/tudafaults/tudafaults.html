@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+   <head>
+      <title>Tuda Landline Faults</title>
+      <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="refresh" content="120">
+      <script src="{% static 'js/mpld3.js' %}"></script>
+
+      <style>
+      
+                     body {
+                  font-family: "calibri";
+               }	
+                  
+
+               .table {
+                  font-family: "calibri";
+                  border-collapse: collapse;
+                  width: 100%;
+               }
+
+               .table td, .table th, .table tr {
+                  border: 1px solid black;
+                  padding: 5px;
+               }
+
+               .table tr:hover {background-color: #ddd;}
+
+               .table th {
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  text-align: center;
+                  background-color: orange;
+                  color: white;
+               }
+
+               .container {
+                  width:100%;
+                  padding-right:15px;
+                  padding-left:15px;
+                  margin-right:auto;
+                  margin-left:auto
+               }
+
+               .button {
+                  
+                  background-color: #4CAF50;
+                  border-radius: 5px;
+                  color: white;
+                  padding: 2px 5px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 15px;
+                  margin: 4px 2px;
+                  cursor: pointer;
+               }
+
+      </style>
+     
+   </head>
+   <body>
+   
+    
+   <div>
+
+	   <h2 align="center">Tuda Landline Faults</h2>
+             
+   {{dn | safe}}
+   
+   </div>
+
+   <br/>
+
+   <div align="center" style="border:1px solid red">
+      Developed by Veera Raghava JTO
+   </div>
+
+   <div>
+	
+   {{chart | safe}}
+   
+   </div>
+          
+
+   </body>
+</html>

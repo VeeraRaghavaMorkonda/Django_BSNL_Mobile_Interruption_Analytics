@@ -1,0 +1,1564 @@
+ <!DOCTYPE html>
+ {% load static %}
+ <html lang="en">
+
+    <head>
+      <title> 2G & 3G BTS Interruptions</title>
+      <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="{% static 'js/charts.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+    </head>
+
+    <body>
+
+      <table class="mytable">
+      <tr>
+         <th colspan='5' nowrap >
+            <center>
+               <h3><b><font color = black>ANALYSIS OF 2G & 3G  BTS INTERRUPTIONS (DEC-18) </font></b></h3>
+            </center>
+         </th>
+         <th colspan='17' >
+            <center>
+               <h3><b><font color = black> INTERRUPTIONS DUE TO MEDIA </font></b></h3>
+            </center>
+         </th>
+         <th colspan='23' >
+            <center>
+               <h3><b><font color = black> INTERRUPTIONS DUE TO POWER </font></b></h3>
+            </center>
+         </th>
+         <th colspan='8' >
+            <center>
+               <h3><b><font color = black> INTERRUPTIONS DUE TO HARDWARE & MISC </font></b></h3>
+            </center>
+         </th>
+      </tr>
+      <tr>
+         <th colspan='5' >
+             INTERRUPTION SUMMARY 
+         </th>
+         <th colspan='3' >
+             STR OFC BREAKS 
+         </th>
+         <th colspan='3' >
+             SSA OFC BREAKS 
+         </th>
+         <th colspan='3' >
+             BUILT UP FAULTS 
+         </th>
+         <th colspan='3' >
+             OFC RING FAULTS 
+         </th>
+         <th colspan='3' >
+             OF EQPT FAULTS 
+         </th>
+         <th colspan='1' nowrap >
+             TOTAL OUTAGE 
+         </th>
+         <th colspan='1' nowrap >
+             TOTAL % 
+         </th>
+         <th colspan='3' >
+             POWER SUPPLY FAULTS 
+         </th>
+         <th colspan='3' >
+             POWER PLANT FAULTS 
+         </th>
+         <th colspan='3' >
+             DG FAULTS 
+         </th>
+         <th colspan='3' >
+             DG START BATTERY FAULTS 
+         </th>
+         <th colspan='3' >
+             BATTERY BACKUP FAULTS 
+         </th>
+         <th colspan='3' >
+             NO DG SETS 
+         </th>
+         <th colspan='3' >
+             NO DIESEL 
+         </th>
+         <th colspan='1' nowrap >
+             TOTAL OUTAGE 
+         </th>
+         <th colspan='1' nowrap >
+             TOTAL % 
+         </th>
+         <th colspan='3' >
+             BTS HARDWARE FAULTS 
+         </th>
+         <th colspan='3' >
+             MISC FAULTS 
+         </th>
+         <th colspan='1' nowrap >
+             TOTAL OUTAGE 
+         </th>
+         <th colspan='1' >
+             TOTAL % 
+         </th>
+      </tr>
+      <tr>
+         <th >
+             SL 
+         </th>
+         <th >
+             SDCA 
+         </th>
+         <th >
+            TOTAL NO OF 2G+3G BTS
+         </th>
+         <th >
+            TOTAL DN TIME (Hrs)
+         </th>
+         <th >
+            AVERAGE DN TIME PER BTS (Hrs)
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO STR OFC BREAKS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO SSA OFC BREAKS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO BUILTUP FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO RING FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO OF EQPT FAULTS
+         </th>
+         <th colspan='1' >
+             DUE TO MEDIA (Hrs) 
+         </th>
+         <th colspan='1' >
+             DUE TO MEDIA 
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO POWER SUPPLY FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO POWER PLANT FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO DG FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE DG BATTERY FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO BATTERY BACKUP FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO NO DG 
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO NO DIESEL
+         </th>
+         <th colspan='1' >
+             DUE TO POWER (Hrs) 
+         </th>
+         <th colspan='1' >
+             DUE TO POWER 
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO BTS HARDWARE FAULTS
+         </th>
+         <th >
+            NO OF INTERRUPTIONS
+         </th>
+         <th >
+            OUTAGE TIME (Hrs)
+         </th>
+         <th >
+            % DUE TO MISC FAULTS
+         </th>
+         <th colspan='1' >
+             DUE TO HARDWARE & MISC (Hrs) 
+         </th>
+         <th colspan='1' >
+             DUE TO HARDWARE & MISC 
+         </th>
+      </tr>
+          
+
+        <tr>
+
+        <td align=center><b>1</b></td>
+        <td><b>B.KOTHAKOTA</b></td>
+        <td align=center> 10 </td> <!-- B.KOTHAKOTA TOWERS-->
+        <td align=center><b> <a href=/bkkdet target=_blank> {{bkktotal}} </a></b></td>
+        <td align=center> {{bkkavg}} </td>
+        <td align=center> {{bkkstrcnt}} </td>
+        <td align=center> {{bkkstrofc}} </td>
+        <td align=center> {{bkkstrofcper}} </td>
+        <td align=center> {{bkkssacnt}} </td>
+        <td align=center> {{bkkssaofc}} </td>
+        <td align=center> {{bkkssaofcper}} </td>
+        <td align=center> {{bkkbltcnt}} </td>
+        <td align=center> {{bkkblt}} </td>
+        <td align=center> {{bkkbltper}} </td>
+        <td align=center> {{bkkringcnt}} </td>
+        <td align=center> {{bkkring}} </td>
+        <td align=center> {{bkkringper}} </td>
+        <td align=center> {{bkkofeptcnt}} </td>
+        <td align=center> {{bkkofept}} </td>
+        <td align=center> {{bkkofeptper}} </td>
+        <td align=center><b><font color = red>{{bkktotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{bkktotmediaper}}</font></b></td>
+        <td align=center> {{bkkpsfcnt}} </td>
+        <td align=center> {{bkkpsf}} </td>
+        <td align=center> {{bkkpsfper}} </td>
+        <td align=center> {{bkkppfcnt}} </td>
+        <td align=center> {{bkkppf}} </td>
+        <td align=center> {{bkkppfper}} </td>
+        <td align=center> {{bkkdgcnt}} </td>
+        <td align=center> {{bkkdg}} </td>
+        <td align=center> {{bkkdgper}} </td>
+        <td align=center> {{bkkdgbattcnt}} </td>
+        <td align=center> {{bkkdgbatt}} </td>
+        <td align=center> {{bkkdgbattper}} </td>
+        <td align=center> {{bkklbattcnt}} </td>
+        <td align=center> {{bkklbatt}} </td>
+        <td align=center> {{bkklbattper}} </td>
+        <td align=center> {{bkknodgcnt}} </td>
+        <td align=center> {{bkknodg}} </td>
+        <td align=center> {{bkknodgper}} </td>
+        <td align=center> {{bkknodslcnt}} </td>
+        <td align=center> {{bkknodsl}} </td>
+        <td align=center> {{bkknodslper}} </td>
+        <td align=center><b><font color = red> {{bkktotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{bkktotpwrper}}</font></b></td>
+        <td align=center> {{bkkhwbtscnt}} </td>
+        <td align=center> {{bkkhwbts}} </td>
+        <td align=center> {{bkkhwbtsper}} </td>
+        <td align=center> {{bkkmisccnt}} </td>
+        <td align=center> {{bkkmisc}} </td>
+        <td align=center> {{bkkmiscper}} </td>
+        <td align=center><b><font color = red> {{bkktothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{bkktothwmiscper}}</font></b></td>
+        </tr>
+
+        <tr>
+
+        <td align=center><b>2</b></td>
+        <td><b>BANGARUPALEM</b></td>
+        <td align=center> 18 </td> <!-- BANGARUPALEM TOWERS-->
+        <td align=center><b> <a href=/bgpdet target=_blank> {{bgptotal}} </a></b></td>
+        <td align=center> {{bgpavg}} </td>
+        <td align=center> {{bgpstrcnt}} </td>
+        <td align=center> {{bgpstrofc}} </td>
+        <td align=center> {{bgpstrofcper}} </td>
+        <td align=center> {{bgpssacnt}} </td>
+        <td align=center> {{bgpssaofc}} </td>
+        <td align=center> {{bgpssaofcper}} </td>
+        <td align=center> {{bgpbltcnt}} </td>
+        <td align=center> {{bgpblt}} </td>
+        <td align=center> {{bgpbltper}} </td>
+        <td align=center> {{bgpringcnt}} </td>
+        <td align=center> {{bgpring}} </td>
+        <td align=center> {{bgpringper}} </td>
+        <td align=center> {{bgpofeptcnt}} </td>
+        <td align=center> {{bgpofept}} </td>
+        <td align=center> {{bgpofeptper}} </td>
+        <td align=center><b><font color = red>{{bgptotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{bgptotmediaper}}</font></b></td>
+        <td align=center> {{bgppsfcnt}} </td>
+        <td align=center> {{bgppsf}} </td>
+        <td align=center> {{bgppsfper}} </td>
+        <td align=center> {{bgpppfcnt}} </td>
+        <td align=center> {{bgpppf}} </td>
+        <td align=center> {{bgpppfper}} </td>
+        <td align=center> {{bgpdgcnt}} </td>
+        <td align=center> {{bgpdg}} </td>
+        <td align=center> {{bgpdgper}} </td>
+        <td align=center> {{bgpdgbattcnt}} </td>
+        <td align=center> {{bgpdgbatt}} </td>
+        <td align=center> {{bgpdgbattper}} </td>
+        <td align=center> {{bgplbattcnt}} </td>
+        <td align=center> {{bgplbatt}} </td>
+        <td align=center> {{bgplbattper}} </td>
+        <td align=center> {{bgpnodgcnt}} </td>
+        <td align=center> {{bgpnodg}} </td>
+        <td align=center> {{bgpnodgper}} </td>
+        <td align=center> {{bgpnodslcnt}} </td>
+        <td align=center> {{bgpnodsl}} </td>
+        <td align=center> {{bgpnodslper}} </td>
+        <td align=center><b><font color = red> {{bgptotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{bgptotpwrper}}</font></b></td>
+        <td align=center> {{bgphwbtscnt}} </td>
+        <td align=center> {{bgphwbts}} </td>
+        <td align=center> {{bgphwbtsper}} </td>
+        <td align=center> {{bgpmisccnt}} </td>
+        <td align=center> {{bgpmisc}} </td>
+        <td align=center> {{bgpmiscper}} </td>
+        <td align=center><b><font color = red> {{bgptothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{bgptothwmiscper}}</font></b></td>
+        </tr>
+
+        <tr>
+
+        <td align=center><b>3</b></td>
+        <td><b>CHANDRAGIRI</b></td> <!-- CHANDRAGIRI TOWERS-->
+        <td align=center> 155 </td>
+        <td align=center><b> <a href=/cdrdet target=_blank> {{cdrtotal}} </a></b></td>
+        <td align=center> {{cdravg}} </td>
+        <td align=center> {{cdrstrcnt}} </td>
+        <td align=center> {{cdrstrofc}} </td>
+        <td align=center> {{cdrstrofcper}} </td>
+        <td align=center> {{cdrssacnt}} </td>
+        <td align=center> {{cdrssaofc}} </td>
+        <td align=center> {{cdrssaofcper}} </td>
+        <td align=center> {{cdrbltcnt}} </td>
+        <td align=center> {{cdrblt}} </td>
+        <td align=center> {{cdrbltper}} </td>
+        <td align=center> {{cdrringcnt}} </td>
+        <td align=center> {{cdrring}} </td>
+        <td align=center> {{cdrringper}} </td>
+        <td align=center> {{cdrofeptcnt}} </td>
+        <td align=center> {{cdrofept}} </td>
+        <td align=center> {{cdrofeptper}} </td>
+        <td align=center><b><font color = red>{{cdrtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{cdrtotmediaper}}</font></b></td>
+        <td align=center> {{cdrpsfcnt}} </td>
+        <td align=center> {{cdrpsf}} </td>
+        <td align=center> {{cdrpsfper}} </td>
+        <td align=center> {{cdrppfcnt}} </td>
+        <td align=center> {{cdrppf}} </td>
+        <td align=center> {{cdrppfper}} </td>
+        <td align=center> {{cdrdgcnt}} </td>
+        <td align=center> {{cdrdg}} </td>
+        <td align=center> {{cdrdgper}} </td>
+        <td align=center> {{cdrdgbattcnt}} </td>
+        <td align=center> {{cdrdgbatt}} </td>
+        <td align=center> {{cdrdgbattper}} </td>
+        <td align=center> {{cdrlbattcnt}} </td>
+        <td align=center> {{cdrlbatt}} </td>
+        <td align=center> {{cdrlbattper}} </td>
+        <td align=center> {{cdrnodgcnt}} </td>
+        <td align=center> {{cdrnodg}} </td>
+        <td align=center> {{cdrnodgper}} </td>
+        <td align=center> {{cdrnodslcnt}} </td>
+        <td align=center> {{cdrnodsl}} </td>
+        <td align=center> {{cdrnodslper}} </td>
+        <td align=center><b><font color = red> {{cdrtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{cdrtotpwrper}}</font></b></td>
+        <td align=center> {{cdrhwbtscnt}} </td>
+        <td align=center> {{cdrhwbts}} </td>
+        <td align=center> {{cdrhwbtsper}} </td>
+        <td align=center> {{cdrmisccnt}} </td>
+        <td align=center> {{cdrmisc}} </td>
+        <td align=center> {{cdrmiscper}} </td>
+        <td align=center><b><font color = red> {{cdrtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{cdrtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>4</b></td>
+        <td><b>CHITTOOR</b></td>
+        <td align=center> 92 </td> <!-- CHITTOOR TOWERS-->
+
+        <td align=center><b> <a href=/ctrdet target=_blank> {{ctrtotal}} </a></b></td>
+        <td align=center> {{ctravg}} </td>
+        <td align=center> {{ctrstrcnt}} </td>
+        <td align=center> {{ctrstrofc}} </td>
+        <td align=center> {{ctrstrofcper}} </td>
+        <td align=center> {{ctrssacnt}} </td>
+        <td align=center> {{ctrssaofc}} </td>
+        <td align=center> {{ctrssaofcper}} </td>
+        <td align=center> {{ctrbltcnt}} </td>
+        <td align=center> {{ctrblt}} </td>
+        <td align=center> {{ctrbltper}} </td>
+        <td align=center> {{ctrringcnt}} </td>
+        <td align=center> {{ctrring}} </td>
+        <td align=center> {{ctrringper}} </td>
+        <td align=center> {{ctrofeptcnt}} </td>
+        <td align=center> {{ctrofept}} </td>
+        <td align=center> {{ctrofeptper}} </td>
+        <td align=center><b><font color = red>{{ctrtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{ctrtotmediaper}}</font></b></td>
+        <td align=center> {{ctrpsfcnt}} </td>
+        <td align=center> {{ctrpsf}} </td>
+        <td align=center> {{ctrpsfper}} </td>
+        <td align=center> {{ctrppfcnt}} </td>
+        <td align=center> {{ctrppf}} </td>
+        <td align=center> {{ctrppfper}} </td>
+        <td align=center> {{ctrdgcnt}} </td>
+        <td align=center> {{ctrdg}} </td>
+        <td align=center> {{ctrdgper}} </td>
+        <td align=center> {{ctrdgbattcnt}} </td>
+        <td align=center> {{ctrdgbatt}} </td>
+        <td align=center> {{ctrdgbattper}} </td>
+        <td align=center> {{ctrlbattcnt}} </td>
+        <td align=center> {{ctrlbatt}} </td>
+        <td align=center> {{ctrlbattper}} </td>
+        <td align=center> {{ctrnodgcnt}} </td>
+        <td align=center> {{ctrnodg}} </td>
+        <td align=center> {{ctrnodgper}} </td>
+        <td align=center> {{ctrnodslcnt}} </td>
+        <td align=center> {{ctrnodsl}} </td>
+        <td align=center> {{ctrnodslper}} </td>
+        <td align=center><b><font color = red> {{ctrtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{ctrtotpwrper}}</font></b></td>
+        <td align=center> {{ctrhwbtscnt}} </td>
+        <td align=center> {{ctrhwbts}} </td>
+        <td align=center> {{ctrhwbtsper}} </td>
+        <td align=center> {{ctrmisccnt}} </td>
+        <td align=center> {{ctrmisc}} </td>
+        <td align=center> {{ctrmiscper}} </td>
+        <td align=center><b><font color = red> {{ctrtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{ctrtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>5</b></td>
+        <td><b>KUPPAM</b></td>
+        <td align=center> 22 </td> <!-- KUPPAM TOWERS-->
+
+        <td align=center><b> <a href=/kupdet target=_blank> {{kuptotal}} </a></b></td>
+        <td align=center> {{kupavg}} </td>
+        <td align=center> {{kupstrcnt}} </td>
+        <td align=center> {{kupstrofc}} </td>
+        <td align=center> {{kupstrofcper}} </td>
+        <td align=center> {{kupssacnt}} </td>
+        <td align=center> {{kupssaofc}} </td>
+        <td align=center> {{kupssaofcper}} </td>
+        <td align=center> {{kupbltcnt}} </td>
+        <td align=center> {{kupblt}} </td>
+        <td align=center> {{kupbltper}} </td>
+        <td align=center> {{kupringcnt}} </td>
+        <td align=center> {{kupring}} </td>
+        <td align=center> {{kupringper}} </td>
+        <td align=center> {{kupofeptcnt}} </td>
+        <td align=center> {{kupofept}} </td>
+        <td align=center> {{kupofeptper}} </td>
+        <td align=center><b><font color = red>{{kuptotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{kuptotmediaper}}</font></b></td>
+        <td align=center> {{kuppsfcnt}} </td>
+        <td align=center> {{kuppsf}} </td>
+        <td align=center> {{kuppsfper}} </td>
+        <td align=center> {{kupppfcnt}} </td>
+        <td align=center> {{kupppf}} </td>
+        <td align=center> {{kupppfper}} </td>
+        <td align=center> {{kupdgcnt}} </td>
+        <td align=center> {{kupdg}} </td>
+        <td align=center> {{kupdgper}} </td>
+        <td align=center> {{kupdgbattcnt}} </td>
+        <td align=center> {{kupdgbatt}} </td>
+        <td align=center> {{kupdgbattper}} </td>
+        <td align=center> {{kuplbattcnt}} </td>
+        <td align=center> {{kuplbatt}} </td>
+        <td align=center> {{kuplbattper}} </td>
+        <td align=center> {{kupnodgcnt}} </td>
+        <td align=center> {{kupnodg}} </td>
+        <td align=center> {{kupnodgper}} </td>
+        <td align=center> {{kupnodslcnt}} </td>
+        <td align=center> {{kupnodsl}} </td>
+        <td align=center> {{kupnodslper}} </td>
+        <td align=center><b><font color = red> {{kuptotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{kuptotpwrper}}</font></b></td>
+        <td align=center> {{kuphwbtscnt}} </td>
+        <td align=center> {{kuphwbts}} </td>
+        <td align=center> {{kuphwbtsper}} </td>
+        <td align=center> {{kupmisccnt}} </td>
+        <td align=center> {{kupmisc}} </td>
+        <td align=center> {{kupmiscper}} </td>
+        <td align=center><b><font color = red> {{kuptothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{kuptothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>6</b></td>
+        <td><b>MADANAPALLI</b></td>
+        <td align=center> 68 </td> <!-- MADANAPALLI TOWERS-->
+
+        <td align=center><b> <a href=/mdpdet target=_blank> {{mdptotal}} </a></b></td>
+        <td align=center> {{mdpavg}} </td>
+        <td align=center> {{mdpstrcnt}} </td>
+        <td align=center> {{mdpstrofc}} </td>
+        <td align=center> {{mdpstrofcper}} </td>
+        <td align=center> {{mdpssacnt}} </td>
+        <td align=center> {{mdpssaofc}} </td>
+        <td align=center> {{mdpssaofcper}} </td>
+        <td align=center> {{mdpbltcnt}} </td>
+        <td align=center> {{mdpblt}} </td>
+        <td align=center> {{mdpbltper}} </td>
+        <td align=center> {{mdpringcnt}} </td>
+        <td align=center> {{mdpring}} </td>
+        <td align=center> {{mdpringper}} </td>
+        <td align=center> {{mdpofeptcnt}} </td>
+        <td align=center> {{mdpofept}} </td>
+        <td align=center> {{mdpofeptper}} </td>
+        <td align=center><b><font color = red>{{mdptotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{mdptotmediaper}}</font></b></td>
+        <td align=center> {{mdppsfcnt}} </td>
+        <td align=center> {{mdppsf}} </td>
+        <td align=center> {{mdppsfper}} </td>
+        <td align=center> {{mdpppfcnt}} </td>
+        <td align=center> {{mdpppf}} </td>
+        <td align=center> {{mdpppfper}} </td>
+        <td align=center> {{mdpdgcnt}} </td>
+        <td align=center> {{mdpdg}} </td>
+        <td align=center> {{mdpdgper}} </td>
+        <td align=center> {{mdpdgbattcnt}} </td>
+        <td align=center> {{mdpdgbatt}} </td>
+        <td align=center> {{mdpdgbattper}} </td>
+        <td align=center> {{mdplbattcnt}} </td>
+        <td align=center> {{mdplbatt}} </td>
+        <td align=center> {{mdplbattper}} </td>
+        <td align=center> {{mdpnodgcnt}} </td>
+        <td align=center> {{mdpnodg}} </td>
+        <td align=center> {{mdpnodgper}} </td>
+        <td align=center> {{mdpnodslcnt}} </td>
+        <td align=center> {{mdpnodsl}} </td>
+        <td align=center> {{mdpnodslper}} </td>
+        <td align=center><b><font color = red> {{mdptotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{mdptotpwrper}}</font></b></td>
+        <td align=center> {{mdphwbtscnt}} </td>
+        <td align=center> {{mdphwbts}} </td>
+        <td align=center> {{mdphwbtsper}} </td>
+        <td align=center> {{mdpmisccnt}} </td>
+        <td align=center> {{mdpmisc}} </td>
+        <td align=center> {{mdpmiscper}} </td>
+        <td align=center><b><font color = red> {{mdptothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{mdptothwmiscper}}</font></b></td>
+
+        </tr>
+        <tr>
+
+        <td align=center><b>7</b></td>
+        <td><b>PAKALA</b></td>
+        <td align=center> 23 </td> <!-- PAKALA TOWERS-->
+
+        <td align=center><b> <a href=/pakdet target=_blank> {{paktotal}} </a></b></td>
+        <td align=center> {{pakavg}} </td>
+        <td align=center> {{pakstrcnt}} </td>
+        <td align=center> {{pakstrofc}} </td>
+        <td align=center> {{pakstrofcper}} </td>
+        <td align=center> {{pakssacnt}} </td>
+        <td align=center> {{pakssaofc}} </td>
+        <td align=center> {{pakssaofcper}} </td>
+        <td align=center> {{pakbltcnt}} </td>
+        <td align=center> {{pakblt}} </td>
+        <td align=center> {{pakbltper}} </td>
+        <td align=center> {{pakringcnt}} </td>
+        <td align=center> {{pakring}} </td>
+        <td align=center> {{pakringper}} </td>
+        <td align=center> {{pakofeptcnt}} </td>
+        <td align=center> {{pakofept}} </td>
+        <td align=center> {{pakofeptper}} </td>
+        <td align=center><b><font color = red>{{paktotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{paktotmediaper}}</font></b></td>
+        <td align=center> {{pakpsfcnt}} </td>
+        <td align=center> {{pakpsf}} </td>
+        <td align=center> {{pakpsfper}} </td>
+        <td align=center> {{pakppfcnt}} </td>
+        <td align=center> {{pakppf}} </td>
+        <td align=center> {{pakppfper}} </td>
+        <td align=center> {{pakdgcnt}} </td>
+        <td align=center> {{pakdg}} </td>
+        <td align=center> {{pakdgper}} </td>
+        <td align=center> {{pakdgbattcnt}} </td>
+        <td align=center> {{pakdgbatt}} </td>
+        <td align=center> {{pakdgbattper}} </td>
+        <td align=center> {{paklbattcnt}} </td>
+        <td align=center> {{paklbatt}} </td>
+        <td align=center> {{paklbattper}} </td>
+        <td align=center> {{paknodgcnt}} </td>
+        <td align=center> {{paknodg}} </td>
+        <td align=center> {{paknodgper}} </td>
+        <td align=center> {{paknodslcnt}} </td>
+        <td align=center> {{paknodsl}} </td>
+        <td align=center> {{paknodslper}} </td>
+        <td align=center><b><font color = red> {{paktotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{paktotpwrper}}</font></b></td>
+        <td align=center> {{pakhwbtscnt}} </td>
+        <td align=center> {{pakhwbts}} </td>
+        <td align=center> {{pakhwbtsper}} </td>
+        <td align=center> {{pakmisccnt}} </td>
+        <td align=center> {{pakmisc}} </td>
+        <td align=center> {{pakmiscper}} </td>
+        <td align=center><b><font color = red> {{paktothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{paktothwmiscper}}</font></b></td>
+
+        </tr>
+
+
+        <tr>
+
+        <td align=center><b>8</b></td>
+        <td><b>PALAMANER</b></td>
+        <td align=center> 22 </td> <!-- PALAMANER TOWERS-->
+
+        <td align=center><b> <a href=/plmdet target=_blank> {{plmtotal}} </a></b></td>
+        <td align=center> {{plmavg}} </td>
+        <td align=center> {{plmstrcnt}} </td>
+        <td align=center> {{plmstrofc}} </td>
+        <td align=center> {{plmstrofcper}} </td>
+        <td align=center> {{plmssacnt}} </td>
+        <td align=center> {{plmssaofc}} </td>
+        <td align=center> {{plmssaofcper}} </td>
+        <td align=center> {{plmbltcnt}} </td>
+        <td align=center> {{plmblt}} </td>
+        <td align=center> {{plmbltper}} </td>
+        <td align=center> {{plmringcnt}} </td>
+        <td align=center> {{plmring}} </td>
+        <td align=center> {{plmringper}} </td>
+        <td align=center> {{plmofeptcnt}} </td>
+        <td align=center> {{plmofept}} </td>
+        <td align=center> {{plmofeptper}} </td>
+        <td align=center><b><font color = red>{{plmtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{plmtotmediaper}}</font></b></td>
+        <td align=center> {{plmpsfcnt}} </td>
+        <td align=center> {{plmpsf}} </td>
+        <td align=center> {{plmpsfper}} </td>
+        <td align=center> {{plmppfcnt}} </td>
+        <td align=center> {{plmppf}} </td>
+        <td align=center> {{plmppfper}} </td>
+        <td align=center> {{plmdgcnt}} </td>
+        <td align=center> {{plmdg}} </td>
+        <td align=center> {{plmdgper}} </td>
+        <td align=center> {{plmdgbattcnt}} </td>
+        <td align=center> {{plmdgbatt}} </td>
+        <td align=center> {{plmdgbattper}} </td>
+        <td align=center> {{plmlbattcnt}} </td>
+        <td align=center> {{plmlbatt}} </td>
+        <td align=center> {{plmlbattper}} </td>
+        <td align=center> {{plmnodgcnt}} </td>
+        <td align=center> {{plmnodg}} </td>
+        <td align=center> {{plmnodgper}} </td>
+        <td align=center> {{plmnodslcnt}} </td>
+        <td align=center> {{plmnodsl}} </td>
+        <td align=center> {{plmnodslper}} </td>
+        <td align=center><b><font color = red> {{plmtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{plmtotpwrper}}</font></b></td>
+        <td align=center> {{plmhwbtscnt}} </td>
+        <td align=center> {{plmhwbts}} </td>
+        <td align=center> {{plmhwbtsper}} </td>
+        <td align=center> {{plmmisccnt}} </td>
+        <td align=center> {{plmmisc}} </td>
+        <td align=center> {{plmmiscper}} </td>
+        <td align=center><b><font color = red> {{plmtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{plmtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>9</b></td>
+        <td><b>PILER</b></td>
+        <td align=center> 38 </td> <!-- PILER TOWERS-->
+
+        <td align=center><b> <a href=/plrdet target=_blank> {{plrtotal}} </a></b></td>
+        <td align=center> {{plravg}} </td>
+        <td align=center> {{plrstrcnt}} </td>
+        <td align=center> {{plrstrofc}} </td>
+        <td align=center> {{plrstrofcper}} </td>
+        <td align=center> {{plrssacnt}} </td>
+        <td align=center> {{plrssaofc}} </td>
+        <td align=center> {{plrssaofcper}} </td>
+        <td align=center> {{plrbltcnt}} </td>
+        <td align=center> {{plrblt}} </td>
+        <td align=center> {{plrbltper}} </td>
+        <td align=center> {{plrringcnt}} </td>
+        <td align=center> {{plrring}} </td>
+        <td align=center> {{plrringper}} </td>
+        <td align=center> {{plrofeptcnt}} </td>
+        <td align=center> {{plrofept}} </td>
+        <td align=center> {{plrofeptper}} </td>
+        <td align=center><b><font color = red>{{plrtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{plrtotmediaper}}</font></b></td>
+        <td align=center> {{plrpsfcnt}} </td>
+        <td align=center> {{plrpsf}} </td>
+        <td align=center> {{plrpsfper}} </td>
+        <td align=center> {{plrppfcnt}} </td>
+        <td align=center> {{plrppf}} </td>
+        <td align=center> {{plrppfper}} </td>
+        <td align=center> {{plrdgcnt}} </td>
+        <td align=center> {{plrdg}} </td>
+        <td align=center> {{plrdgper}} </td>
+        <td align=center> {{plrdgbattcnt}} </td>
+        <td align=center> {{plrdgbatt}} </td>
+        <td align=center> {{plrdgbattper}} </td>
+        <td align=center> {{plrlbattcnt}} </td>
+        <td align=center> {{plrlbatt}} </td>
+        <td align=center> {{plrlbattper}} </td>
+        <td align=center> {{plrnodgcnt}} </td>
+        <td align=center> {{plrnodg}} </td>
+        <td align=center> {{plrnodgper}} </td>
+        <td align=center> {{plrnodslcnt}} </td>
+        <td align=center> {{plrnodsl}} </td>
+        <td align=center> {{plrnodslper}} </td>
+        <td align=center><b><font color = red> {{plrtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{plrtotpwrper}}</font></b></td>
+        <td align=center> {{plrhwbtscnt}} </td>
+        <td align=center> {{plrhwbts}} </td>
+        <td align=center> {{plrhwbtsper}} </td>
+        <td align=center> {{plrmisccnt}} </td>
+        <td align=center> {{plrmisc}} </td>
+        <td align=center> {{plrmiscper}} </td>
+        <td align=center><b><font color = red> {{plrtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{plrtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>10</b></td>
+        <td><b>PUNGANUR</b></td>
+        <td align=center> 26 </td> <!-- PUNGANUR TOWERS-->
+
+        <td align=center><b> <a href=/pgrdet target=_blank> {{pgrtotal}} </a></b></td>
+        <td align=center> {{pgravg}} </td>
+        <td align=center> {{pgrstrcnt}} </td>
+        <td align=center> {{pgrstrofc}} </td>
+        <td align=center> {{pgrstrofcper}} </td>
+        <td align=center> {{pgrssacnt}} </td>
+        <td align=center> {{pgrssaofc}} </td>
+        <td align=center> {{pgrssaofcper}} </td>
+        <td align=center> {{pgrbltcnt}} </td>
+        <td align=center> {{pgrblt}} </td>
+        <td align=center> {{pgrbltper}} </td>
+        <td align=center> {{pgrringcnt}} </td>
+        <td align=center> {{pgrring}} </td>
+        <td align=center> {{pgrringper}} </td>
+        <td align=center> {{pgrofeptcnt}} </td>
+        <td align=center> {{pgrofept}} </td>
+        <td align=center> {{pgrofeptper}} </td>
+        <td align=center><b><font color = red>{{pgrtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{pgrtotmediaper}}</font></b></td>
+        <td align=center> {{pgrpsfcnt}} </td>
+        <td align=center> {{pgrpsf}} </td>
+        <td align=center> {{pgrpsfper}} </td>
+        <td align=center> {{pgrppfcnt}} </td>
+        <td align=center> {{pgrppf}} </td>
+        <td align=center> {{pgrppfper}} </td>
+        <td align=center> {{pgrdgcnt}} </td>
+        <td align=center> {{pgrdg}} </td>
+        <td align=center> {{pgrdgper}} </td>
+        <td align=center> {{pgrdgbattcnt}} </td>
+        <td align=center> {{pgrdgbatt}} </td>
+        <td align=center> {{pgrdgbattper}} </td>
+        <td align=center> {{pgrlbattcnt}} </td>
+        <td align=center> {{pgrlbatt}} </td>
+        <td align=center> {{pgrlbattper}} </td>
+        <td align=center> {{pgrnodgcnt}} </td>
+        <td align=center> {{pgrnodg}} </td>
+        <td align=center> {{pgrnodgper}} </td>
+        <td align=center> {{pgrnodslcnt}} </td>
+        <td align=center> {{pgrnodsl}} </td>
+        <td align=center> {{pgrnodslper}} </td>
+        <td align=center><b><font color = red> {{pgrtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{pgrtotpwrper}}</font></b></td>
+        <td align=center> {{pgrhwbtscnt}} </td>
+        <td align=center> {{pgrhwbts}} </td>
+        <td align=center> {{pgrhwbtsper}} </td>
+        <td align=center> {{pgrmisccnt}} </td>
+        <td align=center> {{pgrmisc}} </td>
+        <td align=center> {{pgrmiscper}} </td>
+        <td align=center><b><font color = red> {{pgrtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{pgrtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>11</b></td>
+        <td><b>PUTTUR</b></td>
+        <td align=center> 51 </td> <!-- PUTTUR TOWERS-->
+
+        <td align=center><b> <a href=/ptrdet target=_blank> {{ptrtotal}} </a></b></td>
+        <td align=center> {{ptravg}} </td>
+        <td align=center> {{ptrstrcnt}} </td>
+        <td align=center> {{ptrstrofc}} </td>
+        <td align=center> {{ptrstrofcper}} </td>
+        <td align=center> {{ptrssacnt}} </td>
+        <td align=center> {{ptrssaofc}} </td>
+        <td align=center> {{ptrssaofcper}} </td>
+        <td align=center> {{ptrbltcnt}} </td>
+        <td align=center> {{ptrblt}} </td>
+        <td align=center> {{ptrbltper}} </td>
+        <td align=center> {{ptrringcnt}} </td>
+        <td align=center> {{ptrring}} </td>
+        <td align=center> {{ptrringper}} </td>
+        <td align=center> {{ptrofeptcnt}} </td>
+        <td align=center> {{ptrofept}} </td>
+        <td align=center> {{ptrofeptper}} </td>
+        <td align=center><b><font color = red>{{ptrtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{ptrtotmediaper}}</font></b></td>
+        <td align=center> {{ptrpsfcnt}} </td>
+        <td align=center> {{ptrpsf}} </td>
+        <td align=center> {{ptrpsfper}} </td>
+        <td align=center> {{ptrppfcnt}} </td>
+        <td align=center> {{ptrppf}} </td>
+        <td align=center> {{ptrppfper}} </td>
+        <td align=center> {{ptrdgcnt}} </td>
+        <td align=center> {{ptrdg}} </td>
+        <td align=center> {{ptrdgper}} </td>
+        <td align=center> {{ptrdgbattcnt}} </td>
+        <td align=center> {{ptrdgbatt}} </td>
+        <td align=center> {{ptrdgbattper}} </td>
+        <td align=center> {{ptrlbattcnt}} </td>
+        <td align=center> {{ptrlbatt}} </td>
+        <td align=center> {{ptrlbattper}} </td>
+        <td align=center> {{ptrnodgcnt}} </td>
+        <td align=center> {{ptrnodg}} </td>
+        <td align=center> {{ptrnodgper}} </td>
+        <td align=center> {{ptrnodslcnt}} </td>
+        <td align=center> {{ptrnodsl}} </td>
+        <td align=center> {{ptrnodslper}} </td>
+        <td align=center><b><font color = red> {{ptrtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{ptrtotpwrper}}</font></b></td>
+        <td align=center> {{ptrhwbtscnt}} </td>
+        <td align=center> {{ptrhwbts}} </td>
+        <td align=center> {{ptrhwbtsper}} </td>
+        <td align=center> {{ptrmisccnt}} </td>
+        <td align=center> {{ptrmisc}} </td>
+        <td align=center> {{ptrmiscper}} </td>
+        <td align=center><b><font color = red> {{ptrtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{ptrtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>12</b></td>
+        <td><b>SATYAVEDU</b></td>
+        <td align=center> 26 </td> <!-- SATYAVEDU TOWERS-->
+
+        <td align=center><b> <a href=/svddet target=_blank> {{svdtotal}} </a></b></td>
+        <td align=center> {{svdavg}} </td>
+        <td align=center> {{svdstrcnt}} </td>
+        <td align=center> {{svdstrofc}} </td>
+        <td align=center> {{svdstrofcper}} </td>
+        <td align=center> {{svdssacnt}} </td>
+        <td align=center> {{svdssaofc}} </td>
+        <td align=center> {{svdssaofcper}} </td>
+        <td align=center> {{svdbltcnt}} </td>
+        <td align=center> {{svdblt}} </td>
+        <td align=center> {{svdbltper}} </td>
+        <td align=center> {{svdringcnt}} </td>
+        <td align=center> {{svdring}} </td>
+        <td align=center> {{svdringper}} </td>
+        <td align=center> {{svdofeptcnt}} </td>
+        <td align=center> {{svdofept}} </td>
+        <td align=center> {{svdofeptper}} </td>
+        <td align=center><b><font color = red>{{svdtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{svdtotmediaper}}</font></b></td>
+        <td align=center> {{svdpsfcnt}} </td>
+        <td align=center> {{svdpsf}} </td>
+        <td align=center> {{svdpsfper}} </td>
+        <td align=center> {{svdppfcnt}} </td>
+        <td align=center> {{svdppf}} </td>
+        <td align=center> {{svdppfper}} </td>
+        <td align=center> {{svddgcnt}} </td>
+        <td align=center> {{svddg}} </td>
+        <td align=center> {{svddgper}} </td>
+        <td align=center> {{svddgbattcnt}} </td>
+        <td align=center> {{svddgbatt}} </td>
+        <td align=center> {{svddgbattper}} </td>
+        <td align=center> {{svdlbattcnt}} </td>
+        <td align=center> {{svdlbatt}} </td>
+        <td align=center> {{svdlbattper}} </td>
+        <td align=center> {{svdnodgcnt}} </td>
+        <td align=center> {{svdnodg}} </td>
+        <td align=center> {{svdnodgper}} </td>
+        <td align=center> {{svdnodslcnt}} </td>
+        <td align=center> {{svdnodsl}} </td>
+        <td align=center> {{svdnodslper}} </td>
+        <td align=center><b><font color = red> {{svdtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{svdtotpwrper}}</font></b></td>
+        <td align=center> {{svdhwbtscnt}} </td>
+        <td align=center> {{svdhwbts}} </td>
+        <td align=center> {{svdhwbtsper}} </td>
+        <td align=center> {{svdmisccnt}} </td>
+        <td align=center> {{svdmisc}} </td>
+        <td align=center> {{svdmiscper}} </td>
+        <td align=center><b><font color = red> {{svdtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{svdtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>13</b></td>
+        <td><b>SODAM</b></td>
+        <td align=center> 3 </td> <!-- SODAM TOWERS-->
+
+        <td align=center><b> <a href=/sdmdet target=_blank> {{sdmtotal}} </a></b></td>
+        <td align=center> {{sdmavg}} </td>
+        <td align=center> {{sdmstrcnt}} </td>
+        <td align=center> {{sdmstrofc}} </td>
+        <td align=center> {{sdmstrofcper}} </td>
+        <td align=center> {{sdmssacnt}} </td>
+        <td align=center> {{sdmssaofc}} </td>
+        <td align=center> {{sdmssaofcper}} </td>
+        <td align=center> {{sdmbltcnt}} </td>
+        <td align=center> {{sdmblt}} </td>
+        <td align=center> {{sdmbltper}} </td>
+        <td align=center> {{sdmringcnt}} </td>
+        <td align=center> {{sdmring}} </td>
+        <td align=center> {{sdmringper}} </td>
+        <td align=center> {{sdmofeptcnt}} </td>
+        <td align=center> {{sdmofept}} </td>
+        <td align=center> {{sdmofeptper}} </td>
+        <td align=center><b><font color = red>{{sdmtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{sdmtotmediaper}}</font></b></td>
+        <td align=center> {{sdmpsfcnt}} </td>
+        <td align=center> {{sdmpsf}} </td>
+        <td align=center> {{sdmpsfper}} </td>
+        <td align=center> {{sdmppfcnt}} </td>
+        <td align=center> {{sdmppf}} </td>
+        <td align=center> {{sdmppfper}} </td>
+        <td align=center> {{sdmdgcnt}} </td>
+        <td align=center> {{sdmdg}} </td>
+        <td align=center> {{sdmdgper}} </td>
+        <td align=center> {{sdmdgbattcnt}} </td>
+        <td align=center> {{sdmdgbatt}} </td>
+        <td align=center> {{sdmdgbattper}} </td>
+        <td align=center> {{sdmlbattcnt}} </td>
+        <td align=center> {{sdmlbatt}} </td>
+        <td align=center> {{sdmlbattper}} </td>
+        <td align=center> {{sdmnodgcnt}} </td>
+        <td align=center> {{sdmnodg}} </td>
+        <td align=center> {{sdmnodgper}} </td>
+        <td align=center> {{sdmnodslcnt}} </td>
+        <td align=center> {{sdmnodsl}} </td>
+        <td align=center> {{sdmnodslper}} </td>
+        <td align=center><b><font color = red> {{sdmtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{sdmtotpwrper}}</font></b></td>
+        <td align=center> {{sdmhwbtscnt}} </td>
+        <td align=center> {{sdmhwbts}} </td>
+        <td align=center> {{sdmhwbtsper}} </td>
+        <td align=center> {{sdmmisccnt}} </td>
+        <td align=center> {{sdmmisc}} </td>
+        <td align=center> {{sdmmiscper}} </td>
+        <td align=center><b><font color = red> {{sdmtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{sdmtothwmiscper}}</font></b></td>
+
+        </tr>
+
+
+        <tr>
+
+        <td align=center><b>14</b></td>
+        <td><b>SRIKALAHASTI</b></td>
+        <td align=center> 38 </td> <!-- SRIKALAHASTI TOWERS-->
+
+        <td align=center><b> <a href=/skhtdet target=_blank> {{skhttotal}} </a></b></td>
+        <td align=center> {{skhtavg}} </td>
+        <td align=center> {{skhtstrcnt}} </td>
+        <td align=center> {{skhtstrofc}} </td>
+        <td align=center> {{skhtstrofcper}} </td>
+        <td align=center> {{skhtssacnt}} </td>
+        <td align=center> {{skhtssaofc}} </td>
+        <td align=center> {{skhtssaofcper}} </td>
+        <td align=center> {{skhtbltcnt}} </td>
+        <td align=center> {{skhtblt}} </td>
+        <td align=center> {{skhtbltper}} </td>
+        <td align=center> {{skhtringcnt}} </td>
+        <td align=center> {{skhtring}} </td>
+        <td align=center> {{skhtringper}} </td>
+        <td align=center> {{skhtofeptcnt}} </td>
+        <td align=center> {{skhtofept}} </td>
+        <td align=center> {{skhtofeptper}} </td>
+        <td align=center><b><font color = red>{{skhttotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{skhttotmediaper}}</font></b></td>
+        <td align=center> {{skhtpsfcnt}} </td>
+        <td align=center> {{skhtpsf}} </td>
+        <td align=center> {{skhtpsfper}} </td>
+        <td align=center> {{skhtppfcnt}} </td>
+        <td align=center> {{skhtppf}} </td>
+        <td align=center> {{skhtppfper}} </td>
+        <td align=center> {{skhtdgcnt}} </td>
+        <td align=center> {{skhtdg}} </td>
+        <td align=center> {{skhtdgper}} </td>
+        <td align=center> {{skhtdgbattcnt}} </td>
+        <td align=center> {{skhtdgbatt}} </td>
+        <td align=center> {{skhtdgbattper}} </td>
+        <td align=center> {{skhtlbattcnt}} </td>
+        <td align=center> {{skhtlbatt}} </td>
+        <td align=center> {{skhtlbattper}} </td>
+        <td align=center> {{skhtnodgcnt}} </td>
+        <td align=center> {{skhtnodg}} </td>
+        <td align=center> {{skhtnodgper}} </td>
+        <td align=center> {{skhtnodslcnt}} </td>
+        <td align=center> {{skhtnodsl}} </td>
+        <td align=center> {{skhtnodslper}} </td>
+        <td align=center><b><font color = red> {{skhttotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{skhttotpwrper}}</font></b></td>
+        <td align=center> {{skhthwbtscnt}} </td>
+        <td align=center> {{skhthwbts}} </td>
+        <td align=center> {{skhthwbtsper}} </td>
+        <td align=center> {{skhtmisccnt}} </td>
+        <td align=center> {{skhtmisc}} </td>
+        <td align=center> {{skhtmiscper}} </td>
+        <td align=center><b><font color = red> {{skhttothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{skhttothwmiscper}}</font></b></td>
+
+        </tr>
+
+
+        <tr>
+
+        <td align=center><b>15</b></td>
+        <td><b>VAYALPADU</b></td>
+        <td align=center> 23 </td> <!-- VAYALPADU TOWERS-->
+
+        <td align=center><b> <a href=/vpddet target=_blank> {{vpdtotal}} </a></b></td>
+        <td align=center> {{vpdavg}} </td>
+        <td align=center> {{vpdstrcnt}} </td>
+        <td align=center> {{vpdstrofc}} </td>
+        <td align=center> {{vpdstrofcper}} </td>
+        <td align=center> {{vpdssacnt}} </td>
+        <td align=center> {{vpdssaofc}} </td>
+        <td align=center> {{vpdssaofcper}} </td>
+        <td align=center> {{vpdbltcnt}} </td>
+        <td align=center> {{vpdblt}} </td>
+        <td align=center> {{vpdbltper}} </td>
+        <td align=center> {{vpdringcnt}} </td>
+        <td align=center> {{vpdring}} </td>
+        <td align=center> {{vpdringper}} </td>
+        <td align=center> {{vpdofeptcnt}} </td>
+        <td align=center> {{vpdofept}} </td>
+        <td align=center> {{vpdofeptper}} </td>
+        <td align=center><b><font color = red>{{vpdtotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{vpdtotmediaper}}</font></b></td>
+        <td align=center> {{vpdpsfcnt}} </td>
+        <td align=center> {{vpdpsf}} </td>
+        <td align=center> {{vpdpsfper}} </td>
+        <td align=center> {{vpdppfcnt}} </td>
+        <td align=center> {{vpdppf}} </td>
+        <td align=center> {{vpdppfper}} </td>
+        <td align=center> {{vpddgcnt}} </td>
+        <td align=center> {{vpddg}} </td>
+        <td align=center> {{vpddgper}} </td>
+        <td align=center> {{vpddgbattcnt}} </td>
+        <td align=center> {{vpddgbatt}} </td>
+        <td align=center> {{vpddgbattper}} </td>
+        <td align=center> {{vpdlbattcnt}} </td>
+        <td align=center> {{vpdlbatt}} </td>
+        <td align=center> {{vpdlbattper}} </td>
+        <td align=center> {{vpdnodgcnt}} </td>
+        <td align=center> {{vpdnodg}} </td>
+        <td align=center> {{vpdnodgper}} </td>
+        <td align=center> {{vpdnodslcnt}} </td>
+        <td align=center> {{vpdnodsl}} </td>
+        <td align=center> {{vpdnodslper}} </td>
+        <td align=center><b><font color = red> {{vpdtotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{vpdtotpwrper}}</font></b></td>
+        <td align=center> {{vpdhwbtscnt}} </td>
+        <td align=center> {{vpdhwbts}} </td>
+        <td align=center> {{vpdhwbtsper}} </td>
+        <td align=center> {{vpdmisccnt}} </td>
+        <td align=center> {{vpdmisc}} </td>
+        <td align=center> {{vpdmiscper}} </td>
+        <td align=center><b><font color = red> {{vpdtothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{vpdtothwmiscper}}</font></b></td>
+
+        </tr>
+
+        <tr>
+
+        <td align=center><b>16</b></td>
+        <td><b>V.KOTA</b></td>
+        <td align=center> 7 </td> <!-- VENKATAGIRIKOTA TOWERS-->
+
+        <td align=center><b> <a href=/vktdet target=_blank> {{vkttotal}} </a></b></td>
+        <td align=center> {{vktavg}} </td>
+        <td align=center> {{vktstrcnt}} </td>
+        <td align=center> {{vktstrofc}} </td>
+        <td align=center> {{vktstrofcper}} </td>
+        <td align=center> {{vktssacnt}} </td>
+        <td align=center> {{vktssaofc}} </td>
+        <td align=center> {{vktssaofcper}} </td>
+        <td align=center> {{vktbltcnt}} </td>
+        <td align=center> {{vktblt}} </td>
+        <td align=center> {{vktbltper}} </td>
+        <td align=center> {{vktringcnt}} </td>
+        <td align=center> {{vktring}} </td>
+        <td align=center> {{vktringper}} </td>
+        <td align=center> {{vktofeptcnt}} </td>
+        <td align=center> {{vktofept}} </td>
+        <td align=center> {{vktofeptper}} </td>
+        <td align=center><b><font color = red>{{vkttotmedia}}</font></b></td>
+        <td align=center><b><font color = red>{{vkttotmediaper}}</font></b></td>
+        <td align=center> {{vktpsfcnt}} </td>
+        <td align=center> {{vktpsf}} </td>
+        <td align=center> {{vktpsfper}} </td>
+        <td align=center> {{vktppfcnt}} </td>
+        <td align=center> {{vktppf}} </td>
+        <td align=center> {{vktppfper}} </td>
+        <td align=center> {{vktdgcnt}} </td>
+        <td align=center> {{vktdg}} </td>
+        <td align=center> {{vktdgper}} </td>
+        <td align=center> {{vktdgbattcnt}} </td>
+        <td align=center> {{vktdgbatt}} </td>
+        <td align=center> {{vktdgbattper}} </td>
+        <td align=center> {{vktlbattcnt}} </td>
+        <td align=center> {{vktlbatt}} </td>
+        <td align=center> {{vktlbattper}} </td>
+        <td align=center> {{vktnodgcnt}} </td>
+        <td align=center> {{vktnodg}} </td>
+        <td align=center> {{vktnodgper}} </td>
+        <td align=center> {{vktnodslcnt}} </td>
+        <td align=center> {{vktnodsl}} </td>
+        <td align=center> {{vktnodslper}} </td>
+        <td align=center><b><font color = red> {{vkttotpwr}}</font></b></td>
+        <td align=center><b><font color = red> {{vkttotpwrper}}</font></b></td>
+        <td align=center> {{vkthwbtscnt}} </td>
+        <td align=center> {{vkthwbts}} </td>
+        <td align=center> {{vkthwbtsper}} </td>
+        <td align=center> {{vktmisccnt}} </td>
+        <td align=center> {{vktmisc}} </td>
+        <td align=center> {{vktmiscper}} </td>
+        <td align=center><b><font color = red> {{vkttothwmisc}}</font></b></td>
+        <td align=center><b><font color = red> {{vkttothwmiscper}}</font></b></td>
+
+        </tr>
+
+
+        <tr>
+
+        <td align=center colspan=2><b>CTR SSA GRAND TOTAL</b></td>
+        <td align=center><b>635<b></td>
+        <td align=center><b><font color = red>{{totaldntime}}</font></b></td>
+        <td align=center><b><font color = red>{{totavgdntime}}</font></b></td>
+        <td align=center><b>{{grandtotstrcnt}}</b></td>
+        <td align=center><b> <a href=/strtot target=_blank>{{grandtotstroutage}}</a></b></td>
+        <td align=center><b>{{grandtotstrper}}</b></td>
+
+        <td align=center><b>{{grandtotssacnt}}</b></td>
+        <td align=center><b> <a href=/ssatot target=_blank>{{grandtotssaoutage}}</a></b></td>
+        <td align=center><b>{{grandtotssaper}}</b></td>
+        <td align=center><b>{{grandtotbltcnt}}</b></td>
+        <td align=center><b> <a href=/blttot target=_blank>{{grandtotbltoutage}}</a></b></td>
+        <td align=center><b>{{grandtotbltper}}</b></td>
+        <td align=center><b>{{grandtotringcnt}}</b></td>
+        <td align=center><b> <a href=/ringtot target=_blank>{{grandtotringoutage}}</a></b></td>
+        <td align=center><b>{{grandtotringper}}</b></td>
+        <td align=center><b>{{grandtotofeptcnt}}</b></td>
+        <td align=center><b> <a href=/ofepttot target=_blank>{{grandtotofeptoutage}}</a></b></td>
+        <td align=center><b>{{grandtotofeptper}}</b></td>
+
+        <td align=center><b><font color = red>{{mediagrandtotoutage}}</font></b></td>
+        <td align=center><b><font color = red>{{mediagrandtotper}}</font></b></td>
+
+        <td align=center><b>{{grandtotpsfcnt}}</b></td>
+        <td align=center><b> <a href=/psftot target=_blank>{{grandtotpsfoutage}}</a></b></td>
+        <td align=center><b>{{grandtotpsfper}}</b></td>
+        <td align=center><b>{{grandtotppfcnt}}</b></td>
+        <td align=center><b> <a href=/ppftot target=_blank>{{grandtotppfoutage}}</a></b></td>
+        <td align=center><b>{{grandtotppfper}}</b></td>
+        <td align=center><b>{{grandtotdgcnt }}</b></td>
+        <td align=center><b> <a href=/dgtot target=_blank>{{grandtotdgoutage}}</a></b></td>
+        <td align=center><b>{{grandtotdgper}}</b></td>
+        <td align=center><b>{{grandtotdgbattcnt}}</b></td>
+        <td align=center><b> <a href=/dgbatttot target=_blank>{{grandtotdgbattoutage}}</a></b></td>
+        <td align=center><b>{{grandtotdgbattper}}</b></td>
+        <td align=center><b>{{grandtotlbattcnt}}</b></td>
+        <td align=center><b> <a href=/lbatttot target=_blank>{{grandtotlbattoutage}}</a></b></td>
+        <td align=center><b>{{grandtotlbattper}}</b></td>
+        <td align=center><b>{{grandtotnodgcnt}}<b></td>
+        <td align=center><b> <a href=/nodgtot target=_blank>{{grandtotnodgoutage}}</a></b></td>
+        <td align=center><b>{{grandtotnodgper}}</b></td>
+        <td align=center><b>{{grandtotnodslcnt}}</b></td>
+        <td align=center><b> <a href=/nodsltot target=_blank>{{grandtotnodsloutage}}</a></b></td>
+        <td align=center><b>{{grandtotnodslper}}</b></td>
+
+        <td align=center><b><font color = red>{{powergrandtotoutage}}</font></b></td>
+        <td align=center><b><font color = red>{{powergrandtotper }}</font></b></td>
+
+
+        <td align=center><b>{{grandtothwbtscnt}}</b></td>
+        <td align=center><b> <a href=/hwtot target=_blank>{{grandtothwbtsoutage}}</a></b></td>
+        <td align=center><b>{{grandtothwbtsper }}</b></td>
+        <td align=center><b>{{grandtotmisccnt}}</b></td>
+        <td align=center><b> <a href=/misctot target=_blank>{{grandtotmiscoutage}}</a></b></td>
+        <td align=center><b>{{grandtotmiscper}}</b></td>
+
+        <td align=center><b><font color = red>{{hwmiscgrandtotoutage}}</font></b></td>
+        <td align=center><b><font color = red>{{hwmiscgrandtotper}}</font></b></td>
+
+        </tr>
+
+    </table>
+          
+      <div>
+         <h2>
+            <center> Chittoor SSA 2G & 3G BTS Total Outage (DEC-18) : <b><font color = 'red'>{{totaldntime}} Hrs</font></b></center>
+         </h2>
+      </div>
+      
+      <div id="summary_chart"></div>
+      <div id="sdca_chart"></div>
+      <div id="avgdt_chart"></div>
+
+      <script>
+
+         var strofc = {{grandtotstroutage}};
+         var ssaofc = {{grandtotssaoutage}};
+         var bltup = {{grandtotbltoutage}};
+         var  ring= {{grandtotringoutage}};
+         var  ofept= {{grandtotofeptoutage}};
+         var  psf= {{grandtotpsfoutage}};
+         var  ppf= {{grandtotppfoutage}};
+         var dg = {{grandtotdgoutage}};
+         var  dgbatt= {{grandtotdgbattoutage}};
+         var  lbatt= {{grandtotlbattoutage}};
+         var  nodg= {{grandtotnodgoutage}};
+         var  nodsl= {{grandtotnodsloutage}};
+         var  hw= {{grandtothwbtsoutage}};
+         var  misc= {{grandtotmiscoutage}};
+
+
+         var bkk = {{bkktotal}};
+         var bgp = {{bgptotal}};
+         var cdr = {{cdrtotal}};
+         var ctr = {{ctrtotal}};
+         var kup = {{kuptotal}};
+         var mdp = {{mdptotal}};
+         var pak = {{paktotal}};
+         var plm = {{plmtotal}};
+         var plr = {{plrtotal}};
+         var pgr = {{pgrtotal}};
+         var ptr = {{ptrtotal}};
+         var svd = {{svdtotal}};
+         var sdm = {{sdmtotal}};
+         var skht = {{skhttotal}};
+         var vpd = {{vpdtotal}};
+         var vkt = {{vkttotal}};
+
+         var bkkavg   = {{bkkavg}};
+         var bgpavg  = {{bgpavg}};
+         var cdravg  = {{cdravg}};
+         var ctravg  = {{ctravg}};
+         var kupavg  = {{kupavg}};
+         var mdpavg  = {{mdpavg}};
+         var pakavg  = {{pakavg}};
+         var plmavg  = {{plmavg}};
+         var plravg  = {{plravg}};
+         var pgravg  = {{pgravg}};
+         var ptravg  = {{ptravg}};
+         var svdavg  = {{svdavg}};
+         var sdmavg  = {{sdmavg}};
+         var skhtavg  = {{skhtavg}};
+         var vpdavg  = {{vpdavg}};
+         var vktavg  = {{vktavg}};
+
+
+            // Load the Visualization API and the piechart package.
+            google.charts.load('current', {'packages':['corechart']});
+
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.charts.setOnLoadCallback(totalchart);
+
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function totalchart() {
+
+              // Create the data table.
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'reason');
+              data.addColumn('number', 'outage');
+              data.addRows([
+           ['STR OFC', strofc ],
+           ['SSA OFC', ssaofc ],
+           ['BLT UP', bltup],
+           ['RING', ring],
+           ['OF EPT', ofept],
+           ['PSF', psf],
+           ['PPF', ppf],
+           ['DG', dg],
+           ['DG BATT', dgbatt],
+           ['LOW BB', lbatt],
+           ['NO DG', nodg],
+           ['NO FUEL', nodsl],
+           ['HW', hw],
+           ['MISC', misc]
+
+              ]);
+
+              // Set chart options
+              var options = {
+         	title: 'FAULT WISE 2G & 3G INTERRUPTIONS',
+         	width: 900,
+         	height: 500,
+         	pieSliceText: 'label',
+         	legend: { position: 'labeled' },
+         	is3D: true
+         };
+
+              // Instantiate and draw our chart, passing in some options.
+              var chart = new google.visualization.PieChart(document.getElementById('summary_chart'));
+
+              function selectHandler() {
+                var selectedItem = chart.getSelection()[0];
+                if (selectedItem) {
+                  var reason = data.getValue(selectedItem.row, 0);
+         if ( reason == "STR OFC" )
+         window.open("/strtot");
+                   else if ( reason == "SSA OFC" )
+         	 window.open("/ssatot");
+          else if ( reason == "BLT UP" )
+         	 window.open("/blttot");
+          else if ( reason == "RING" )
+         	 window.open("/ringtot");
+          else if ( reason == "OF EPT" )
+         	 window.open("/ofepttot");
+          else if ( reason == "PSF" )
+         	 window.open("/psftot");
+          else if ( reason == "PPF" )
+         	 window.open("/ppftot");
+          else if ( reason == "DG" )
+         	 window.open("/dgtot");
+          else if ( reason == "DG BATT" )
+         	 window.open("/dgbatttot");
+          else if ( reason == "LOW BB" )
+         	 window.open("/lbatttot");
+          else if ( reason == "NO DG" )
+         	 window.open("/nodgtot");
+          else if ( reason == "NO FUEL" )
+         	 window.open("/nodsltot");
+          else if ( reason == "HW" )
+         	 window.open("/hwtot");
+          else if ( reason == "MISC" )
+         	 window.open("/misctot");
+
+                }
+              }
+
+              google.visualization.events.addListener(chart, 'select', selectHandler);
+         data.sort([{column: 1}]);
+              chart.draw(data, options);
+            }
+
+            // Load the Visualization API and the piechart package.
+            google.charts.load('current', {'packages':['corechart']});
+
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.charts.setOnLoadCallback(sdcachart);
+
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function sdcachart() {
+
+              // Create the data table.
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'sdca');
+              data.addColumn('number', 'outage');
+              data.addRows([
+           ['BKK', bkk],
+           ['BGP', bgp],
+           ['CDR', cdr],
+           ['CTR', ctr],
+           ['KUP', kup],
+           ['MDP', mdp],
+           ['PAK', pak],
+           ['PLM', plm],
+           ['PLR', plr],
+           ['PGR', pgr],
+           ['PTR', ptr],
+           ['SVD', svd],
+           ['SDM', sdm],
+           ['SKT', skht],
+           ['VPD', vpd],
+           ['VKT', vkt]
+              ]);
+
+              // Set chart options
+              var options = {
+         	title: 'SDCA WISE 2G & 3G INTERRUPTIONS',
+         	width: 900,
+         	height: 500,
+         	pieSliceText: 'label',
+         	legend: { position: 'labeled' },
+         	is3D: true
+         };
+
+              // Instantiate and draw our chart, passing in some options.
+              var chart = new google.visualization.PieChart(document.getElementById('sdca_chart'));
+
+              function selectHandler() {
+                var selectedItem = chart.getSelection()[0];
+                if (selectedItem) {
+                  var sdca = data.getValue(selectedItem.row, 0);
+         if ( sdca == "BKK" )
+         window.open("/bkkdet");
+                   else if ( sdca == "BGP" )
+         	 window.open("/bgpdet");
+          else if ( sdca == "CDR" )
+         	 window.open("/cdrdet");
+          else if ( sdca == "CTR" )
+         	 window.open("/ctrdet");
+          else if ( sdca == "KUP" )
+         	 window.open("/kupdet");
+          else if ( sdca == "MDP" )
+         	 window.open("/mdpdet");
+          else if ( sdca == "PAK" )
+         	 window.open("/pakdet");
+          else if ( sdca == "PLM" )
+         	 window.open("/plmdet");
+          else if ( sdca == "PLR" )
+         	 window.open("/plrdet");
+          else if ( sdca == "PGR" )
+         	 window.open("/pgrdet");
+          else if ( sdca == "PTR" )
+         	 window.open("/ptrdet");
+          else if ( sdca == "SVD" )
+         	 window.open("/svddet");
+          else if ( sdca == "SDM" )
+         	 window.open("/sdmdet");
+          else if ( sdca == "SKT" )
+         	 window.open("/skhtdet");
+          else if ( sdca == "VPD" )
+         	 window.open("/vpddet");
+          else if ( sdca == "VKT" )
+         	 window.open("/vktdet");
+                }
+              }
+
+              google.visualization.events.addListener(chart, 'select', selectHandler);
+         data.sort([{column: 1}]);
+              chart.draw(data, options);
+            }
+
+
+         google.charts.load("current", {packages:['corechart']});
+          google.charts.setOnLoadCallback(avgdtchart);
+          function avgdtchart() {
+            var data = google.visualization.arrayToDataTable([
+                ["sdca", "avg_dt", { role: "style" } ],
+                ["BKK",  bkkavg, "#e64d00"],
+          ["BGP", bgpavg, "#e64d00"],
+          ["CDR", cdravg, "#e64d00"],
+          ["CTR", ctravg, "#e64d00"],
+          ["KUP", kupavg, "#e64d00"],
+          ["MDP", mdpavg, "#e64d00"],
+          ["PAK", pakavg, "#e64d00"],
+          ["PLM", plmavg, "#e64d00"],
+          ["PLR", plravg, "#e64d00"],
+          ["PGR", pgravg, "#e64d00"],
+          ["PTR", ptravg, "#e64d00"],
+          ["SVD", svdavg, "#e64d00"],
+          ["SDM", sdmavg, "#e64d00"],
+          ["SKT", skhtavg, "#e64d00"],
+          ["VPD", vpdavg, "#e64d00"],
+          ["VKT", vktavg,"#e64d00"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                             { calc: "stringify",
+                               sourceColumn: 1,
+                               type: "string",
+                               role: "annotation" },
+                             2]);
+
+            var options = {
+              title: "SDCA WISE 2G & 3G BTS Average Downtime (Hrs)",
+              width: 1300,
+              height: 500,
+         bar: {groupWidth: "80%"},
+              legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("avgdt_chart"));
+         data.sort([{column: 1}]);
+            chart.draw(view, options);
+         }
+
+
+
+      </script>
+
+</body>
+</html>

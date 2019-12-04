@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  {% load staticfiles %}
+ <html>
+      <head>
+            <title>NORTEL 2G Traffic</title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+      </head>
+      <body>
+<div id="nortel_table">
+      {% if result %}
+
+ <table class="mytable">
+
+	  <thead>
+      <tr>
+		  <th><a class="column_sort" id="Date" data-order={{ order }} href="#">DATE</a></th>
+		   <th><a class="column_sort" id="Bts_Name" data-order={{ order }} href="#">BTS NAME</a></th>
+		   <th><a class="column_sort" id="Call_Volume" data-order={{ order }} href="#">CALLS</a></th>
+		   <th><a class="column_sort" id="TCH_BLOCKING" data-order={{ order }} href="#">TCH</a></th>
+		   <th><a class="column_sort" id="AFR" data-order={{ order }} href="#">AFR</a></th>
+			<th><a class="column_sort" id="Drop_Call_Rate" data-order={{ order }} href="#">DCR</a></th>
+			<th><a class="column_sort" id="RF_Drops" data-order={{ order }} href="#">RF DROPS </a></th>
+			<th><a class="column_sort" id="Non_RF_Drops" data-order={{ order }} href="#">NON RF DROPS</a></th>
+			<th><a class="column_sort" id="CSSR_NEW" data-order={{ order }} href="#">CSSR</a></th>
+			<th><a class="column_sort" id="HO_Success_Rate_New" data-order={{ order }} href="#">HOSR</a></th>
+			<th><a class="column_sort" id="HO_Failure_Rate" data-order={{ order }} href="#">HOFR</a></th>
+	  </tr>
+
+
+      {% for each in result %}
+
+     <tbody id = "myTable">
+										<tr>
+										<td><center>{{ each.Date }}</center></td>
+									   <td>{{ each.Bts_Name }}</td>
+									   <td><center>{{ each.Call_Volume }}</center></td>
+									   <td><center>{{ each.TCH_BLOCKING }}</center></td>
+									   <td><center> {{ each.AFR }}</center></td>
+									   <td><center>{{ each.Drop_Call_Rate }}</center></td>
+									   <td><center>{{ each.RF_Drops }}</center></td>
+									   <td><center>{{ each.Non_RF_Drops }}</center></td>
+									   <td><center>{{ each.CSSR_NEW }} </center></td>
+									   <td><center>{{ each.HO_Success_Rate_New }}</center></td>
+									   <td><center>{{ each.HO_Failure_Rate }}</center></td>
+									    </tr>
+                         {% endfor %}
+
+				        </table>
+
+					    {% else %}
+
+					    <h3> No Data Found For Given Dates ! </h3>
+
+					    {% endif %}
+
+
+           <br />
+</div>
+
+      </body>
+ </html>

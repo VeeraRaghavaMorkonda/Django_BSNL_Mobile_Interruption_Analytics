@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+ {% load staticfiles %}
+ <html>  
+      <head>  
+            <title>ZTE 3G Traffic</title> 
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">		   
+            <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+      </head>  
+      <body>  
+        		<div class = 'container' style = "width:1150px;">
+				<h2 align="center">ZTE 3G Traffic</h2>  
+		
+				<form method = "post" action = 'details'>
+                    {% csrf_token %}
+				From Date  <input type = 'date' value="2019-10-01" name = "from_date" id = "from_date"/> &nbsp
+				To Date  <input type = 'date' value="2019-10-15" name = "to_date" id = "to_date"/> &nbsp
+				<input type = "submit" value = "Get Data" class="button">
+				<br/> <br/>
+				Search BTS <input type = 'text' id = "myInput">
+				</form>	
+
+                  <h4 style = "letter-spacing: 3px;text-align: center;color: green;border: 2px solid green;border-radius: 7px;">KPI Benchmarks => [TCH < 2%]___[AFR < 3%]___[DCR < 2%]___[CSSR > 95%]___[HOSR > 95%]  </h4>
+                <div id="zte_table">
+                     <table class="mytable"> 
+						<thead>					 
+                          <tr>  
+                               <th><a class="column_sort" id="Date" data-order="desc" href="#">DATE</a></th>  
+							   <th><a class="column_sort" id="Cell_Name" data-order="desc" href="#">BTS NAME</a></th>  
+							   <th><a class="column_sort" id="Call_Volume" data-order="desc" href="#">CALLS</a></th>  
+							   <th><a class="column_sort" id="Call_Drop" data-order="desc" href="#">DCR</a></th>
+							   <th><a class="column_sort" id="Speech_Setup" data-order="desc" href="#">CSSR</a></th>
+							   <th><a class="column_sort" id="dl_data" data-order="desc" href="#">DOWNLOAD (GB)</a></th>
+							   <th><a class="column_sort" id="ul_data" data-order="desc" href="#">UPLOAD (GB)</a></th>
+								
+					      </tr>  
+                          
+                          {% if result %}
+
+			              {% for each in result %}
+
+                           
+										<tbody id = "myTable">
+										<tr>  
+										<td><center>{{ each.Date }}</center></td>   
+									   <td>{{ each.Cell_Name }}</td>   
+									   <td><center>{{ each.Call_Volume }}</center></td> 
+									   <td><center>{{ each.Call_Drop }}</center></td>  
+									   <td><center> {{ each.Speech_Setup }}</center></td> 
+									   <td><center>{{ each.dl_data }}</center></td> 
+									   <td><center>{{ each.ul_data }}</center></td> 
+									    </tr>
+
+                          {% endfor %}
+
+
+                            </table>
+
+					{% else %}
+
+					<h3> No Data Found For Given Dates ! </h3>
+
+					{% endif %}
+
+                </div>  
+           </div>  
+
+
+							
+<script>
+ $(document).ready(function(){
+
+
+
+      $(document).on('click','.column_sort',function(){
+		   var from_date = $('#from_date').val();
+           var to_date = $('#to_date').val();
+           var column_name = $(this).attr("id");
+           var order = $(this).data("order");
+           var arrow = '';
+           //glyphicon glyphicon-arrow-up
+           //glyphicon glyphicon-arrow-down
+           if(order == 'desc')
+           {
+                arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-down"></span>';
+           }
+           else
+           {
+                arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-up"></span>';
+           }
+           $.ajax({
+                url:"zte3g_ajax.php",
+                method:"POST",
+                data:{column_name:column_name, order:order, from_date:from_date, to_date:to_date },
+                success:function(data)
+                {
+                     $('#zte_table').html(data);
+                     $('#'+column_name+'').append(arrow);
+                }
+           })
+      });
+ });
+
+$(document).ready(function()
+									{
+										$("#myInput").on("keyup", function()
+											{
+												var value = $(this).val().toLowerCase();
+												$("#myTable tr").filter(function()
+													{
+														$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+													});
+											});
+									});
+
+
+
+  $(document).ready(function () {
+
+  $("#myTable td:nth-child(3)").each(function () {
+      if (parseFloat($(this).text(), 10) < 100 ) {
+          $(this).css("background-color", "red");
+      }
+  });
+
+    $("#myTable td:nth-child(4)").each(function () {
+        if (parseFloat($(this).text(), 10) > 2 ) {
+            $(this).css("background-color", "red");
+        }
+    });
+
+
+    $("#myTable td:nth-child(5)").each(function () {
+        if (parseFloat($(this).text(), 10) < 95 ) {
+            $(this).css("background-color", "red");
+        }
+    });
+
+    $("#myTable td:nth-child(6)").each(function () {
+        if (parseFloat($(this).text(), 10) == 0 ) {
+            $(this).css("background-color", "red");
+        }
+    });
+
+    $("#myTable td:nth-child(7)").each(function () {
+        if (parseFloat($(this).text(), 10) == 0 ) {
+            $(this).css("background-color", "red");
+        }
+    });
+
+
+
+
+
+
+
+
+  });
+
+ </script>
+
+ 
+ </body>  
+ </html>  
+ 

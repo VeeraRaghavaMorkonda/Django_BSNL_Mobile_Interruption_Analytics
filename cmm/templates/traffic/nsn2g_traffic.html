@@ -1,0 +1,186 @@
+
+ <!DOCTYPE html>
+ {% load staticfiles %}
+ <html>
+      <head>
+            <title>NSN 2G Traffic</title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+      </head>
+      <body>
+
+        		<div class = container style = "width:1150px;">
+
+				<h2 align="center">NSN 2G Traffic</h2>
+
+				<form method = "post" action = 'details'>
+					{% csrf_token %}
+				From Date  <input type = date  name = "from_date" id = "from_date" /> &nbsp
+				To Date  <input type = date  name = "to_date" id = "to_date" /> &nbsp
+				<input type = "submit" value = "Get Data" class="button">
+				<br/> <br/>
+				Search BTS <input type = text id = "myInput">
+				</form>
+
+				 <h4 style = "letter-spacing: 3px;text-align: center;color: green;border: 2px solid green;border-radius: 7px;">KPI Benchmarks => [TCH < 2%]___[AFR < 3%]___[DCR < 2%]___[CSSR > 95%]___[HOSR > 95%]  </h4>
+                <div id="nsn_table">
+                     <table class="mytable">
+						<thead>
+                          <tr>
+                               <th><a class="column_sort" id="DATE" data-order="desc" href="#">DATE</a></th>
+							   <th><a class="column_sort" id="BTS_name" data-order="desc" href="#">BTS NAME</a></th>
+							   <th><a class="column_sort" id="Total_Calls" data-order="desc" href="#">CALLS</a></th>
+							   <th><a class="column_sort" id="TCH_blocking_rate" data-order="desc" href="#">TCH</a></th>
+							   <th><a class="column_sort" id="Assign_Fail_Ratio_Cell" data-order="desc" href="#">AFR</a></th>
+								<th><a class="column_sort" id="Total_Drop_Calls" data-order="desc" href="#">DROPS</a></th>
+								<th><a class="column_sort" id="CSSR" data-order="desc" href="#">CSSR</a></th>
+								<th><a class="column_sort" id="HOSR" data-order="desc" href="#">HOSR</a></th>
+								<th><a class="column_sort" id="Amount_of_active_TRX" data-order="desc" href="#">ACTIVE TRX </a></th>
+								<th><a class="column_sort" id="ConfiguredTRX" data-order="desc" href="#">CONFIG TRX</a></th>
+
+
+
+                          </tr>
+                          
+						  {% if result %}
+
+			              {% for each in result %}
+
+										<tbody id = "myTable">
+										<tr>
+										<td><center>{{ each.DATE }}</center></td>
+									   <td>{{ each.BTS_name }}</td>
+									   <td><center>{{ each.Total_Calls }}</center></td>
+									   <td><center>{{ each.TCH_blocking_rate }}</center></td>
+									   <td><center> {{ each.Assign_Fail_Ratio_Cell }}</center></td>
+									   <td><center>{{ each.Total_Drop_Calls }}</center></td>
+									   <td><center>{{ each.CSSR }} </center></td>
+									   <td><center>{{ each.HOSR }}</center></td>
+									   <td><center>{{ each.Amount_of_active_TRX }}</center></td>
+									   <td><center>{{ each.ConfiguredTRX }}</center></td>
+										</tr>
+						  {% endfor %}
+
+				</table>
+
+					{% else %}
+
+					<h3> No Data Found For Given Dates ! </h3>
+
+					{% endif %}
+                </div>
+           </div>
+
+
+
+<script>
+ $(document).ready(function(){
+
+
+
+      $(document).on('click','.column_sort',function(){
+		   var from_date = $('#from_date').val();
+           var to_date = $('#to_date').val();
+           var column_name = $(this).attr("id");
+           var order = $(this).data("order");
+           var arrow = '';
+           //glyphicon glyphicon-arrow-up
+           //glyphicon glyphicon-arrow-down
+           if(order == 'desc')
+           {
+                arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-down"></span>';
+           }
+           else
+           {
+                arrow = '&nbsp;<span class="glyphicon glyphicon-arrow-up"></span>';
+           }
+           $.ajax({
+                url:"nsn2g_ajax.php",
+                method:"POST",
+                data:{column_name:column_name, order:order, from_date:from_date, to_date:to_date },
+                success:function(data)
+                {
+                     $('#nsn_table').html(data);
+                     $('#'+column_name+'').append(arrow);
+                }
+           })
+      });
+ });
+
+$(document).ready(function()
+									{
+										$("#myInput").on("keyup", function()
+											{
+												var value = $(this).val().toLowerCase();
+												$("#myTable tr").filter(function()
+													{
+														$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+													});
+											});
+									});
+
+$(document).ready(function () {
+
+$("#myTable td:nth-child(3)").each(function () {
+    if (parseFloat($(this).text(), 10) < 100 ) {
+        $(this).css("background-color", "red");
+    }
+});
+
+  $("#myTable td:nth-child(4)").each(function () {
+      if (parseFloat($(this).text(), 10) > 2 ) {
+          $(this).css("background-color", "red");
+      }
+  });
+
+
+  $("#myTable td:nth-child(5)").each(function () {
+      if (parseFloat($(this).text(), 10) > 3 ) {
+          $(this).css("background-color", "red");
+      }
+  });
+
+  $("#myTable td:nth-child(6)").each(function () {
+      if (parseFloat($(this).text(), 10) > 50 ) {
+          $(this).css("background-color", "red");
+      }
+  });
+
+  $("#myTable td:nth-child(7)").each(function () {
+      if (parseFloat($(this).text(), 10) < 95 ) {
+          $(this).css("background-color", "red");
+      }
+  });
+
+  $("#myTable td:nth-child(8)").each(function () {
+      if (parseFloat($(this).text(), 10) < 95 ) {
+          $(this).css("background-color", "red");
+      }
+  });
+
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+ </script>
+
+ </body>
+ </html>
+

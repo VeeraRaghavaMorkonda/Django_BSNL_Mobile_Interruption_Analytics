@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+   <head>
+      <title>Tuda Landline Enquiry</title>
+      <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+      <script src="{% static 'js/mpld3.js' %}"></script>
+     
+   </head>
+  
+<body>
+<div class='container'>
+
+<br>
+<form action="details" method="post">
+      {% csrf_token %}
+     
+<label for="telno"><h3>Landline No</h3></label>
+<input type="text" name="telno">
+<input type="submit" name="submit">
+</form>
+<p> Enter 11 digit TUDA Landline No:- 0877-2240000 </p>
+<hr>
+
+
+<div class='table-responsive'>
+<table class='table-bordered table-hover' style="background-color:pink;">
+
+{% if ll %}
+
+<h3>Customer Info</h3>
+
+
+{% for each in ll %}
+<tr>
+<th>Tel No</th>
+<td>{{ each.PHONE_NO }}</td>
+</tr>
+
+
+<tr>
+<th>Name</th>
+<td>{{ each.NAME }}</td>
+</tr>
+
+<tr>
+<th>Address</th>
+<td>{{ each.HOUSE_NO }}</td>
+</tr>
+
+<tr>
+<th>Locality</th>
+<td>{{ each.VILLAGE_NAME }}</td>
+</tr>
+
+<tr>
+<th>City</th>
+<td>{{ each.CITY }}</td>
+</tr>
+
+<tr>
+<th>Mobile No</th>
+<td>{{ each.MOBILE_NO }}</td>
+</tr>
+
+</div>
+</table>
+{% endfor %}
+
+<hr>
+
+<div class='table-responsive'>
+<table class='table-bordered table-hover' style="background-color:#99ccff";>
+<h3>Indoor Info</h3>
+{% for each in ll %}
+<tr>
+<th>Exchange</th>
+<td>{{ each.SWITCH_CODE }}</td>
+</tr>
+
+
+<tr>
+<th>NE</th>
+<td>{{ each.NE }}</td>
+</tr>
+
+<tr>
+<th>MDF</th>
+<td>{{ each.VERTICAL }}</td>
+</tr>
+
+<tr>
+<th>BB Status</th>
+<td>{{ each.BB_FLAG }}</td>
+</tr>
+{% endfor %}
+
+
+<tr>
+{% for each in bb %}   
+<th>BB Dslam IP</th>
+<td>{{ each.DSLAM_IP }}</td>
+</tr>
+
+<tr>
+<th>BB Outer Vlan</th>
+<td>{{ each.OUTER_VLAN }}</td>
+</tr>
+
+<tr>
+<th>BB Inner Vlan</th>
+<td>{{ each.INNER_VLAN }}</td>
+</tr>
+
+<tr>
+<th>BB Username</th>
+<td>{{ each.USER_ID }}</td>
+</tr>
+{% endfor %}
+
+</div>
+
+</table>
+<hr>
+
+<div class='table-responsive'>
+<table class='table-bordered table-hover' style="background-color:#99ffcc";>
+<h3>Outdoor Info</h3>
+{% for each in ll %}
+<tr>
+<th>Pillar IN</th>
+<td>{{ each.PILLAR_IN }}</td>
+</tr>
+
+
+<tr>
+<th>Pillar OUT</th>
+<td>{{ each.PILLAR_OUT }}</td>
+</tr>
+
+<tr>
+<th>DP No</th>
+<td>{{ each.DP_NO }}</td>
+</tr>
+
+<tr>
+<th>TT Code</th>
+<td>{{ each.LINEMAN_CODE }}</td>
+</tr>
+
+<tr>
+<th>TT Name</th>
+<td>{{ name }}</td>
+</tr>
+
+<tr>
+<th>TT Mobile</th>
+<td>{{ cell }}</td>
+</tr>
+
+
+
+</div>
+
+</table>
+{% endfor %}
+
+<hr>
+
+<div class='table-responsive'>
+<table class='table-bordered table-hover' style="background-color:#ffff99"; >
+<h3>Plan Info</h3>
+{% for each in ll %}
+<tr>
+<th>LL Plan</th>
+<td>{{ each.LL_PLAN }}</td>
+</tr>
+
+<tr>
+<th>BB Plan</th>
+<td>{{ each.BB_PLAN }}</td>
+</tr>
+
+<tr>
+<th>Modem</th>
+<td>{{ each.MODEM_ACQ_TYPE }}</td>
+</tr>
+
+<tr>
+<th>OS Due</th>
+<td>{{ each.OS_AMOUNT }}</td>
+</tr>
+
+<tr>
+<th>Operating Status</th>
+<td>{{ each.OPERATING_STATUS }}</td>
+</tr>
+{% endfor %}
+
+{% else %}
+<h3 style="color:red">{{status}}</h3>
+{% endif %}
+
+</div>
+
+</table>
+<hr>
+
+<div class='table-responsive'>
+<table class='table-bordered table-hover' style="background-color:#e6ccb3";>
+<h3>LandLine Parameters</h3>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Acceptance Value</th>
+<th>Tested Value</th>
+</tr>
+
+<tr>
+<th>L-1</th>
+<td>A.C. potential across A-limb and Earth </td>
+<td>Upto 6V</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-2</th>
+<td>A.C. potential across B-limb and Earth </td>
+<td>Upto 6V</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-3</th>
+<td>D.C. potential across A-limb and Earth </td>
+<td>Upto 6V</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-4</th>
+<td>D.C. potential across B-limb and Earth </td>
+<td>Upto 6V</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-5</th>
+<td>Insulation across A-limb and Earth </td>
+<td>Above 1 Mega Ohm</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-6</th>
+<td>Insulation across B-limb and Earth </td>
+<td>Above 1 Mega Ohm</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-7</th>
+<td>Cross Insulation b/w A-limb & B-limb </td>
+<td>Above 1 Mega Ohm</td>
+<td></td>
+</tr>
+
+<tr>
+<th>L-8</th>
+<td>Capacitance across A-limb & B-limb </td>
+<td>1) Rotary 1.7 to 2.1 MF,
+2) Push button 0.3  to 
+0.5 MF,
+3)Capacitance value of the instrument.
+</td>
+<td></td>
+</tr>
+
+</div>
+
+</table>
+
+<hr/>
+
+</div>
+</body>
+</html>
+   

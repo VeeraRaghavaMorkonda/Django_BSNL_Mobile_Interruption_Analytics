@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+   <head>
+      <title>Repeat Faults</title>
+      <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+   </head>
+   <body>
+      
+         <!-- REPEAT FAULTS -->
+
+         <div>
+
+         {% if result %}
+
+
+            <table class='mytable'>
+
+			<thead>
+
+         	<tr>
+         	<th colspan = '12' style = "color:black;font-size:25px;text-align:center;">REPEAT FAULTS > 5 (SEP-18)</th>
+         	</tr>
+
+
+                
+         	<th>SL</th>
+         	<th>SDCA</th>
+         	<th>BTS_NAME</th>
+         	<th>REPEAT COUNT</th>
+         	<th>DURATION</th>
+
+
+			</thead>
+                
+              {% for each in result %}  
+
+                <tr>
+                    
+                <td align = center> {{ forloop.counter }} </td>    
+         		<td> {{ each.SDCA }}</td>
+         		<td> {{ each.BTS_NAME }}</td>
+         		<td align = center> {{ each.count }}</td>
+         		<td align = center>  {{ each.sum }}</td>
+
+         		</tr>
+
+               {% endfor %}
+
+            </table>
+
+         {% else %}
+
+            <h3>Repeat Faults (>5) = 0</h3>
+
+         {% endif %}
+
+         </div>
+         
+
+         <br/>
+
+         <div>
+
+         {% if repeatdetails %}
+
+
+            <table class='mytable'>
+
+            <thead>
+
+            <tr>
+            <th colspan = '12' style = "color:black;font-size:25px;text-align:center;">DETAILS OF REPEAT FAULTS > 5 </th>
+            </tr>
+
+         	<tr>
+
+         	<th>SL</th>
+         	<th>SDCA</th>
+         	<th>BTS_NAME</th>
+            <th>MAKE</th>
+         	<th>TECH</th>
+         	<th>TYPE</th>
+         	<th>REASON</th>
+         	<th>F_DATE</th>
+         	<th>F_TIME</th>
+         	<th>R_DATE</th>
+         	<th>R_TIME</th>
+         	<th>DURATION</th>
+
+         	</tr>
+
+            </thead>
+
+
+            {% for each in repeatdetails %}    
+
+         	<tr>
+         		<td align = center> {{ forloop.counter }} </td> 
+         		<td> {{ each.SDCA }}</td>
+         		<td> {{ each.BTS_NAME }}</td>
+                <td align = center> {{ each.MAKE }}</td>
+         		<td align = center> {{ each.TECH }}</td>
+         		<td align = center> {{ each.SITE_TYPE }}</td>
+         		<td> {{ each.REASON }}</td>
+         		<td align = center> {{ each.DOWN_DATE }}</td>
+         		<td align = center> {{ each.DOWN_TIME }}</td>
+         		<td align = center> {{ each.CLEARED_DATE }}</td>
+         		<td align = center> {{ each.CLEARED_TIME }}</td>
+         		<td align = center> {{ each.DURATION }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+            </table>
+
+            {% else %}
+
+             <h3>Details of Repeat Faults (>5) = 0</h3>
+
+             {% endif %}
+
+             </div>
+
+   </body>
+</html>

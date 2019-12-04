@@ -1,0 +1,227 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+   <head>
+      <title>Down Time History</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="{% static 'js/charts.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+      <style>
+         .mytable {
+         text-align:center;
+         }
+      </style>
+   </head>
+
+   <body>
+
+      <h2>
+         <center>History of Chittoor SSA BTS Downtimes</center>
+      </h2>
+
+      <div id="totaldt_chart"></div>
+
+      <br/>
+
+      <div id="avgdt_chart"></div>
+
+      <br/><br/>
+
+      <div class="container" style = "width:950px;">
+
+         <table class="mytable">
+
+            <th>MONTH</th>
+            <th>TOTAL NO OF BTS</th>
+            <th>TOTAL DOWN TIME (Hrs)</th>
+            <th>AVG. DOWN TIME (Hrs)</th>
+
+            <tr>
+               <td>AUG-17</td>
+               <td>617</td>
+               <td>7915.58</td>
+               <td>12.82</td>
+            </tr>
+
+            <tr>
+               <td>SEP-17</td>
+               <td>617</td>
+               <td>9532.59</td>
+               <td>15.44</td>
+            </tr>
+
+            <tr>
+               <td>OCT-17</td>
+               <td>617</td>
+               <td>12124.67</td>
+               <td>19.65</td>
+            </tr>
+
+            <tr>
+               <td>NOV-17</td>
+               <td>617</td>
+               <td>8618.88</td>
+               <td>13.96</td>
+            </tr>
+
+            <tr>
+               <td>DEC-17</td>
+               <td>617</td>
+               <td>8034.77</td>
+               <td>13.02</td>
+            </tr>
+
+            <tr>
+               <td>JAN-18</td>
+               <td>617</td>
+               <td>7927.45</td>
+               <td>12.84</td>
+            </tr>
+
+            <tr>
+               <td>FEB-18</td>
+               <td>617</td>
+               <td>9358</td>
+               <td>15.16</td>
+            </tr>
+
+            <tr>
+               <td>MAR-18</td>
+               <td>622</td>
+               <td>10110.67</td>
+               <td>16.25</td>
+            </tr>
+
+            <tr>
+               <td>APR-18</td>
+               <td>622</td>
+               <td>9378.66</td>
+               <td>15.08</td>
+            </tr>
+
+            <tr>
+               <td>MAY-18</td>
+               <td>622</td>
+               <td>9713.4</td>
+               <td>15.62</td>
+            </tr>
+
+            <tr>
+               <td>JUN-18</td>
+               <td>622</td>
+               <td>9530.85</td>
+               <td>15.32</td>
+            </tr>
+
+            <tr>
+               <td>JUL-18</td>
+               <td>622</td>
+               <td>9970.81</td>
+               <td>16.03</td>
+            </tr>
+
+			<tr>
+               <td>AUG-18</td>
+               <td>630</td>
+               <td>9173.09</td>
+               <td>14.56</td>
+            </tr>
+
+            <tr>
+               <td>SEP-18</td>
+               <td>635</td>
+               <td>8575.84</td>
+               <td>13.51</td>
+            </tr>
+
+         </table>
+
+      </div>
+
+      <script>
+         google.charts.load("current", {packages:['corechart']});
+            google.charts.setOnLoadCallback(totaldtchart);
+            function totaldtchart() {
+              var data = google.visualization.arrayToDataTable([
+                  ["month", "total_dt", { role: "style" } ],
+                  ["AUG-17", 7915.58, "#e64d00"],
+         	  ["SEP-17", 9532.59, "#e64d00"],
+         	  ["OCT-17", 12124.67, "#e64d00"],
+         	  ["NOV-17", 8618.88, "#e64d00"],
+         	  ["DEC-17", 8034.77, "#e64d00"],
+         	  ["JAN-18", 7927.45, "#e64d00"],
+         	  ["FEB-18", 9358, "#e64d00"],
+         	  ["MAR-18", 10110.67, "#e64d00"],
+         	  ["APR-18", 9378.66, "#e64d00"],
+         	  ["MAY-18", 9713.4, "#e64d00"],
+         	  ["JUN-18", 9530.85, "#e64d00"],
+         	  ["JUL-18", 9970.81, "#e64d00"],
+			   ["AUG-18", 9173.09, "#e64d00"],
+			   ["SEP-18", 8575.84, "#e64d00"]
+
+              ]);
+
+              var view = new google.visualization.DataView(data);
+              view.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
+              var options = {
+                title: "Chittoor SSA Total Downtime (Hrs)",
+                width: 1300,
+                height: 500,
+         	bar: {groupWidth: "80%"},
+                legend: { position: "none" },
+              };
+              var chart = new google.visualization.ColumnChart(document.getElementById("totaldt_chart"));
+           chart.draw(view, options);
+          }
+
+          	google.charts.load("current", {packages:['corechart']});
+            google.charts.setOnLoadCallback(avgdtchart);
+            function avgdtchart() {
+              var data = google.visualization.arrayToDataTable([
+                  ["month", "avg_dt", { role: "style" } ],
+                  ["AUG-17", 12.82, "#e64d00"],
+         	  ["SEP-17", 15.44, "#e64d00"],
+         	  ["OCT-17", 19.65, "#e64d00"],
+         	  ["NOV-17", 13.96, "#e64d00"],
+         	  ["DEC-17", 13.02, "#e64d00"],
+         	  ["JAN-18", 12.84, "#e64d00"],
+         	  ["FEB-18", 15.16, "#e64d00"],
+         	  ["MAR-18", 16.25, "#e64d00"],
+         	  ["APR-18", 15.08, "#e64d00"],
+         	  ["MAY-18", 15.62, "#e64d00"],
+         	  ["JUN-18", 15.32, "#e64d00"],
+         	  ["JUL-18", 16.03, "#e64d00"],
+			  ["AUG-18", 14.56, "#e64d00"],
+			  ["SEP-18", 13.51, "#e64d00"]
+
+              ]);
+
+              var view = new google.visualization.DataView(data);
+              view.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
+              var options = {
+                title: "Chittoor SSA Avg. Downtime (Hrs)",
+                width: 1300,
+                height: 500,
+         	bar: {groupWidth: "80%"},
+                legend: { position: "none" },
+              };
+              var chart = new google.visualization.ColumnChart(document.getElementById("avgdt_chart"));
+           chart.draw(view, options);
+          }
+
+      </script>
+   </body>
+</html>
