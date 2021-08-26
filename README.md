@@ -1,2 +1,2 @@
-# BSNL_Mobile_Interruption_Analytics_Django_Web_Project
-BSNL_Mobile_Interruption_Analytics_Django_Web_Project
+# Django_BSNL_Mobile_Interruption_Analytics_Project
+Django Web Project for BSNL Cell Tower Interruption Analytics
